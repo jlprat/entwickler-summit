@@ -130,6 +130,49 @@
 .note{font-size:.62em; color:var(--graphite-soft); line-height:1.5; max-width:46ch;}
 .reveal section.card .note{color:rgba(233,225,208,.55);}
 
+/* the folder has been on somebody's desk a while.
+   Only on the single-column .file slides — the two-column ones have no room.
+   Each placement bleeds off an edge so it reads as a spill, not a badge.
+   Gradients alone read as a drawn circle, so the shape is warped and mottled by the
+   turbulence filters in #stain-defs at the top of the body. */
+.stain{
+  position:absolute; z-index:0; pointer-events:none;
+  width:15rem; aspect-ratio:1/.94;
+  mix-blend-mode:multiply;
+  filter:url(#coffee-a);
+  background-repeat:no-repeat;
+  background-image:
+    /* the rim — pinned hard on the outside, diffuse on the inside.
+       That asymmetry is the tell of a dried ring; an even ring reads as a drawn one. */
+    radial-gradient(closest-side,
+      transparent 0 52%, rgba(112,72,34,.05) 62%, rgba(112,72,34,.13) 74%,
+      rgba(99,62,27,.27) 88%, rgba(94,58,24,.33) 96%, rgba(94,58,24,.25) 99%,
+      transparent 100%),
+    /* the wash left under the puddle, pooled off-centre */
+    radial-gradient(closest-side at 44% 54%, rgba(126,86,44,.075) 0 80%, transparent 100%),
+    /* three droplets thrown clear of the ring, into the corners of the box */
+    radial-gradient(closest-side, rgba(99,62,27,.20) 0 62%, rgba(94,58,24,.27) 90%, transparent 100%),
+    radial-gradient(closest-side, rgba(99,62,27,.16) 0 60%, rgba(94,58,24,.22) 90%, transparent 100%),
+    radial-gradient(closest-side, rgba(99,62,27,.12) 0 58%, rgba(94,58,24,.18) 90%, transparent 100%);
+  background-size:100% 100%, 100% 100%, 8.5% 8%, 5% 4.6%, 3.4% 3.2%;
+  background-position:0 0, 0 0, 97% 9%, 2% 82%, 91% 95%;
+}
+.stain::before{ /* the cup was set down more than once */
+  content:""; position:absolute; inset:16% 6% 9% 21%;
+  background:radial-gradient(closest-side,
+    transparent 0 58%, rgba(99,62,27,.07) 72%, rgba(99,62,27,.17) 90%,
+    rgba(99,62,27,.19) 97%, transparent 100%);
+}
+.stain.sm{width:10.5rem;}
+.stain.lg{width:19rem;}
+/* rotation is applied after the filter, so reusing a filter at a different
+   angle and size still reads as a different spill */
+.stain.p1{top:20%; right:-4.5rem; transform:rotate(-14deg);}
+.stain.p2{bottom:-5rem; right:7rem; transform:rotate(22deg); filter:url(#coffee-b);}
+.stain.p3{top:-4.5rem; right:3.5rem; transform:rotate(8deg); filter:url(#coffee-c);}
+.stain.p4{bottom:8%; right:-3.5rem; transform:rotate(-31deg); filter:url(#coffee-b);}
+.stain.p5{bottom:-4rem; left:-4rem; transform:rotate(17deg); filter:url(#coffee-c);}
+
 /* --- the certificate card (slide 1) --- */
 .cert{
   border:5px solid var(--paper); padding:4.6rem 5.4rem 4rem;
@@ -217,6 +260,47 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 </style>
 </head>
 <body>
+
+<!-- Coffee-ring filters for .stain. Three stages, in order:
+     big slow lobes (the puddle was never round), fine ripples (the contact line
+     dried in fingers), then a density mottle so the rim is blotchy rather than
+     evenly inked. Only the seeds and scales differ between a/b/c. -->
+<svg id="stain-defs" width="0" height="0" aria-hidden="true" focusable="false"
+     style="position:absolute;left:-9999px;width:0;height:0">
+  <defs>
+    <filter id="coffee-a" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".009" numOctaves="2" seed="11" result="lobes"/>
+      <feDisplacementMap in="SourceGraphic" in2="lobes" scale="34" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="5" result="fingers"/>
+      <feDisplacementMap in="warped" in2="fingers" scale="7" xChannelSelector="R" yChannelSelector="G" result="ragged"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".02 .028" numOctaves="3" seed="19" result="mottle"/>
+      <feColorMatrix in="mottle" type="matrix" result="density"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .55 .35 0 0 .35"/>
+      <feComposite in="ragged" in2="density" operator="in"/>
+    </filter>
+    <filter id="coffee-b" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".011 .008" numOctaves="2" seed="37" result="lobes"/>
+      <feDisplacementMap in="SourceGraphic" in2="lobes" scale="28" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".11" numOctaves="2" seed="23" result="fingers"/>
+      <feDisplacementMap in="warped" in2="fingers" scale="6" xChannelSelector="R" yChannelSelector="G" result="ragged"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".024 .019" numOctaves="3" seed="3" result="mottle"/>
+      <feColorMatrix in="mottle" type="matrix" result="density"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .6 .3 0 0 .32"/>
+      <feComposite in="ragged" in2="density" operator="in"/>
+    </filter>
+    <filter id="coffee-c" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".0075 .012" numOctaves="2" seed="61" result="lobes"/>
+      <feDisplacementMap in="SourceGraphic" in2="lobes" scale="40" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".075" numOctaves="2" seed="47" result="fingers"/>
+      <feDisplacementMap in="warped" in2="fingers" scale="8" xChannelSelector="R" yChannelSelector="G" result="ragged"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".017 .03" numOctaves="3" seed="29" result="mottle"/>
+      <feColorMatrix in="mottle" type="matrix" result="density"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .5 .4 0 0 .3"/>
+      <feComposite in="ragged" in2="density" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+
 <div class="reveal">
 <div class="slides">
 
@@ -590,6 +674,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 <!-- 10. Exhibit A: libxml2 -->
 <section class="file wide">
   <span class="tab">Exhibit A</span>
+  <span class="stain p1"></span>
   <h2>June 2025 — libxml2 stops accepting embargoed security reports.</h2>
   <p>The maintainer's reasoning: doing security triage for the entire industry, unpaid, on a volunteer schedule, was no longer sustainable.</p>
   <p>libxml2 parses XML in a very large fraction of everything. The industry's answer to "who handles the embargoes" turned out to be one person, and that person stopped.</p>
@@ -664,6 +749,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 <!-- 14. Exhibit B: curl -->
 <section class="file wide">
   <span class="tab">Exhibit B</span>
+  <span class="stain sm p2"></span>
   <h2>curl closes its bug bounty.</h2>
   <dl style="margin:1.6rem 0 0">
     <div class="ev"><dt>2019</dt><dd>Bounty opens on HackerOne. Over its life it pays out roughly <b>$86,000</b> across <b>78</b> confirmed vulnerabilities.</dd></div>
@@ -684,6 +770,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 <!-- 15. Systemic -->
 <section class="file wide">
   <span class="tab">Exhibit C</span>
+  <span class="stain p3"></span>
   <h2>This is not one grumpy maintainer.</h2>
   <ul>
     <li>Node.js raised its HackerOne signal requirements after thirty-plus slop reports landed over a holiday period.</li>
@@ -734,6 +821,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 <!-- 18. The verdict -->
 <section class="file" data-transition="fade">
   <span class="tab">Findings</span>
+  <span class="stain lg p4"></span>
   <div style="display:flex;flex-direction:column;justify-content:center;height:100%;align-items:flex-start">
     <p class="tw" style="font-size:.6em;letter-spacing:.12em;color:var(--graphite-soft);margin-bottom:2.2rem">CASE No. 5492 &nbsp;·&nbsp; CAUSE OF DEATH</p>
     <span class="stamp big" style="font-size:1.35em">Neglect by the beneficiaries</span>
@@ -761,6 +849,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 <!-- 20. What ignoring it buys -->
 <section class="file wide">
   <span class="tab">Exposure</span>
+  <span class="stain p2"></span>
   <h2>What ignoring it buys you</h2>
   <ul>
     <li><strong>Slower CVE response.</strong> Your time-to-patch is bounded below by someone else's evening.</li>
@@ -881,6 +970,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 <!-- 25. When the overlap fails -->
 <section class="file wide">
   <span class="tab">Method</span>
+  <span class="stain p1"></span>
   <h2>When you get the overlap wrong</h2>
   <ul>
     <li><strong>Only you wanted it.</strong> The patch doesn't land. You carry it downstream, and now you maintain a fork you never planned for — forever, quietly, with no owner.</li>
@@ -929,6 +1019,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 <!-- 28. Screen test -->
 <section class="file wide">
   <span class="tab">The pitch</span>
+  <span class="stain p2"></span>
   <h2>It started as a business need, not a good deed.</h2>
   <ul>
     <li>Faster cluster upgrades.</li>
@@ -946,6 +1037,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 <!-- 29. The proving ground -->
 <section class="file wide">
   <span class="tab">The screen test</span>
+  <span class="stain lg p4"></span>
   <h2>Inkless — a fork built to be deleted.</h2>
   <p>October 2024. A fork of Apache Kafka, opened to answer one question: is diskless actually possible?</p>
   <p>It was explicitly temporary from day one. The stated plan was always to delete it once the feature lands upstream.</p>
@@ -1004,6 +1096,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 <!-- 33. Takeaways -->
 <section class="file">
   <span class="tab">Closed</span>
+  <span class="stain sm p3"></span>
   <ol style="font-size:.92em;max-width:40ch">
     <li>Your product is a co-production. You have never read the credits.</li>
     <li>Exhaustion was the mechanism and AI was the accelerant, but neglect was the cause.</li>

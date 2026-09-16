@@ -1,0 +1,100 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+:root{--paper:#e9e1d0;--graphite:#2b2622;--graphite-soft:#5d554c;--manila:#cbbb9b;--stamp:#a5312a;}
+body{margin:0;background:#080706;}
+.slide{position:relative;width:1600px;height:900px;box-sizing:border-box;
+  background:var(--paper);color:var(--graphite);padding:5.5rem 6rem 4.5rem;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;font:400 30px/1.42 system-ui,sans-serif;
+  background-image:radial-gradient(120% 90% at 50% -20%,rgba(255,255,255,.55),transparent 60%),
+    radial-gradient(90% 80% at 110% 120%,rgba(120,100,70,.14),transparent 60%);}
+.slide::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");}
+h2{font-size:1.78em;font-weight:800;letter-spacing:-.022em;line-height:1.02;margin:0 0 .55em;}
+p{line-height:1.42;margin:0 0 .8em;max-width:44ch;}
+.tab{position:absolute;top:0;left:6rem;font-size:.5em;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--manila);padding:.7em 1.5em .55em;border-radius:0 0 3px 3px;}
+/* the folder has been on somebody's desk a while.
+   Only on the single-column .file slides — the two-column ones have no room.
+   Each placement bleeds off an edge so it reads as a spill, not a badge.
+   Gradients alone read as a drawn circle, so the shape is warped and mottled by the
+   turbulence filters in #stain-defs at the top of the body. */
+.stain{
+  position:absolute; z-index:0; pointer-events:none;
+  width:15rem; aspect-ratio:1/.94;
+  mix-blend-mode:multiply;
+  filter:url(#coffee-a);
+  background-repeat:no-repeat;
+  background-image:
+    /* the rim — pinned hard on the outside, diffuse on the inside.
+       That asymmetry is the tell of a dried ring; an even ring reads as a drawn one. */
+    radial-gradient(closest-side,
+      transparent 0 52%, rgba(112,72,34,.05) 62%, rgba(112,72,34,.13) 74%,
+      rgba(99,62,27,.27) 88%, rgba(94,58,24,.33) 96%, rgba(94,58,24,.25) 99%,
+      transparent 100%),
+    /* the wash left under the puddle, pooled off-centre */
+    radial-gradient(closest-side at 44% 54%, rgba(126,86,44,.075) 0 80%, transparent 100%),
+    /* three droplets thrown clear of the ring, into the corners of the box */
+    radial-gradient(closest-side, rgba(99,62,27,.20) 0 62%, rgba(94,58,24,.27) 90%, transparent 100%),
+    radial-gradient(closest-side, rgba(99,62,27,.16) 0 60%, rgba(94,58,24,.22) 90%, transparent 100%),
+    radial-gradient(closest-side, rgba(99,62,27,.12) 0 58%, rgba(94,58,24,.18) 90%, transparent 100%);
+  background-size:100% 100%, 100% 100%, 8.5% 8%, 5% 4.6%, 3.4% 3.2%;
+  background-position:0 0, 0 0, 97% 9%, 2% 82%, 91% 95%;
+}
+.stain::before{ /* the cup was set down more than once */
+  content:""; position:absolute; inset:16% 6% 9% 21%;
+  background:radial-gradient(closest-side,
+    transparent 0 58%, rgba(99,62,27,.07) 72%, rgba(99,62,27,.17) 90%,
+    rgba(99,62,27,.19) 97%, transparent 100%);
+}
+.stain.sm{width:10.5rem;}
+.stain.lg{width:19rem;}
+/* rotation is applied after the filter, so reusing a filter at a different
+   angle and size still reads as a different spill */
+.stain.p1{top:20%; right:-4.5rem; transform:rotate(-14deg);}
+.stain.p2{bottom:-5rem; right:7rem; transform:rotate(22deg); filter:url(#coffee-b);}
+.stain.p3{top:-4.5rem; right:3.5rem; transform:rotate(8deg); filter:url(#coffee-c);}
+.stain.p4{bottom:8%; right:-3.5rem; transform:rotate(-31deg); filter:url(#coffee-b);}
+.stain.p5{bottom:-4rem; left:-4rem; transform:rotate(17deg); filter:url(#coffee-c);}
+
+</style></head><body>
+<svg id="stain-defs" width="0" height="0" aria-hidden="true" focusable="false"
+     style="position:absolute;left:-9999px;width:0;height:0">
+  <defs>
+    <filter id="coffee-a" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".009" numOctaves="2" seed="11" result="lobes"/>
+      <feDisplacementMap in="SourceGraphic" in2="lobes" scale="34" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="5" result="fingers"/>
+      <feDisplacementMap in="warped" in2="fingers" scale="7" xChannelSelector="R" yChannelSelector="G" result="ragged"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".02 .028" numOctaves="3" seed="19" result="mottle"/>
+      <feColorMatrix in="mottle" type="matrix" result="density"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .55 .35 0 0 .35"/>
+      <feComposite in="ragged" in2="density" operator="in"/>
+    </filter>
+    <filter id="coffee-b" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".011 .008" numOctaves="2" seed="37" result="lobes"/>
+      <feDisplacementMap in="SourceGraphic" in2="lobes" scale="28" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".11" numOctaves="2" seed="23" result="fingers"/>
+      <feDisplacementMap in="warped" in2="fingers" scale="6" xChannelSelector="R" yChannelSelector="G" result="ragged"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".024 .019" numOctaves="3" seed="3" result="mottle"/>
+      <feColorMatrix in="mottle" type="matrix" result="density"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .6 .3 0 0 .32"/>
+      <feComposite in="ragged" in2="density" operator="in"/>
+    </filter>
+    <filter id="coffee-c" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".0075 .012" numOctaves="2" seed="61" result="lobes"/>
+      <feDisplacementMap in="SourceGraphic" in2="lobes" scale="40" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".075" numOctaves="2" seed="47" result="fingers"/>
+      <feDisplacementMap in="warped" in2="fingers" scale="8" xChannelSelector="R" yChannelSelector="G" result="ragged"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".017 .03" numOctaves="3" seed="29" result="mottle"/>
+      <feColorMatrix in="mottle" type="matrix" result="density"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .5 .4 0 0 .3"/>
+      <feComposite in="ragged" in2="density" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+<div class="slide"><span class="tab">Exhibit A</span><span class="stain p1"></span><h2>June 2025 — libxml2 stops accepting embargoed security reports.</h2><p>The maintainer's reasoning: doing security triage for the entire industry, unpaid, on a volunteer schedule, was no longer sustainable.</p></div>
+<div class="slide"><span class="tab">Exhibit C</span><span class="stain p3"></span><h2>This is not one grumpy maintainer.</h2><p>Node.js raised its HackerOne signal requirements after thirty-plus slop reports landed over a holiday period.</p></div>
+<div class="slide"><span class="tab">Exposure</span><span class="stain p2"></span><h2>What ignoring it buys you</h2><p>Your time-to-patch is bounded below by someone else's evening.</p></div>
+<div class="slide"><span class="tab">The screen test</span><span class="stain lg p4"></span><h2>Inkless — a fork built to be deleted.</h2><p>October 2024. A fork of Apache Kafka, opened to answer one question: is diskless actually possible?</p></div>
+<div class="slide"><span class="tab">Greenlight</span><span class="stain p5"></span><h2>2 March 2026</h2><p>Splitting the question was the strategic move.</p></div>
+<div class="slide"><span class="tab">Options</span><span class="stain sm p3"></span><h2>Three ways to be in this building</h2><p>Money moves. Fast, easy to approve.</p></div>
+</body></html>
