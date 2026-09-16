@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sustainability beyond funds — Making engineering orgs resilient</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+/* ===== reveal.js 5.1.0 core — MIT, (C) 2011-2024 Hakim El Hattab ===== */
+/*!
+* reveal.js 5.1.0
+* https://revealjs.com
+* MIT licensed
+*
+* Copyright (C) 2011-2024 Hakim El Hattab, https://hakim.se
+*/.reveal .r-stretch,.reveal .stretch{max-width:none;max-height:none}.reveal pre.r-stretch code,.reveal pre.stretch code{height:100%;max-height:100%;box-sizing:border-box}.reveal .r-fit-text{display:inline-block;white-space:nowrap}.reveal .r-stack{display:grid;grid-template-rows:100%}.reveal .r-stack>*{grid-area:1/1;margin:auto}.reveal .r-hstack,.reveal .r-vstack{display:flex}.reveal .r-hstack img,.reveal .r-hstack video,.reveal .r-vstack img,.reveal .r-vstack video{min-width:0;min-height:0;object-fit:contain}.reveal .r-vstack{flex-direction:column;align-items:center;justify-content:center}.reveal .r-hstack{flex-direction:row;align-items:center;justify-content:center}.reveal .items-stretch{align-items:stretch}.reveal .items-start{align-items:flex-start}.reveal .items-center{align-items:center}.reveal .items-end{align-items:flex-end}.reveal .justify-between{justify-content:space-between}.reveal .justify-around{justify-content:space-around}.reveal .justify-start{justify-content:flex-start}.reveal .justify-center{justify-content:center}.reveal .justify-end{justify-content:flex-end}html.reveal-full-page{width:100%;height:100%;height:100vh;height:calc(var(--vh,1vh) * 100);height:100svh;overflow:hidden}.reveal-viewport{height:100%;overflow:hidden;position:relative;line-height:1;margin:0;background-color:#fff;color:#000;--r-controls-spacing:12px}.reveal-viewport:fullscreen{top:0!important;left:0!important;width:100%!important;height:100%!important;transform:none!important}.reveal .fragment{transition:all .2s ease}.reveal .fragment:not(.custom){opacity:0;visibility:hidden;will-change:opacity}.reveal .fragment.visible{opacity:1;visibility:inherit}.reveal .fragment.disabled{transition:none}.reveal .fragment.grow{opacity:1;visibility:inherit}.reveal .fragment.grow.visible{transform:scale(1.3)}.reveal .fragment.shrink{opacity:1;visibility:inherit}.reveal .fragment.shrink.visible{transform:scale(.7)}.reveal .fragment.zoom-in{transform:scale(.1)}.reveal .fragment.zoom-in.visible{transform:none}.reveal .fragment.fade-out{opacity:1;visibility:inherit}.reveal .fragment.fade-out.visible{opacity:0;visibility:hidden}.reveal .fragment.semi-fade-out{opacity:1;visibility:inherit}.reveal .fragment.semi-fade-out.visible{opacity:.5;visibility:inherit}.reveal .fragment.strike{opacity:1;visibility:inherit}.reveal .fragment.strike.visible{text-decoration:line-through}.reveal .fragment.fade-up{transform:translate(0,40px)}.reveal .fragment.fade-up.visible{transform:translate(0,0)}.reveal .fragment.fade-down{transform:translate(0,-40px)}.reveal .fragment.fade-down.visible{transform:translate(0,0)}.reveal .fragment.fade-right{transform:translate(-40px,0)}.reveal .fragment.fade-right.visible{transform:translate(0,0)}.reveal .fragment.fade-left{transform:translate(40px,0)}.reveal .fragment.fade-left.visible{transform:translate(0,0)}.reveal .fragment.current-visible,.reveal .fragment.fade-in-then-out{opacity:0;visibility:hidden}.reveal .fragment.current-visible.current-fragment,.reveal .fragment.fade-in-then-out.current-fragment{opacity:1;visibility:inherit}.reveal .fragment.fade-in-then-semi-out{opacity:0;visibility:hidden}.reveal .fragment.fade-in-then-semi-out.visible{opacity:.5;visibility:inherit}.reveal .fragment.fade-in-then-semi-out.current-fragment{opacity:1;visibility:inherit}.reveal .fragment.highlight-blue,.reveal .fragment.highlight-current-blue,.reveal .fragment.highlight-current-green,.reveal .fragment.highlight-current-red,.reveal .fragment.highlight-green,.reveal .fragment.highlight-red{opacity:1;visibility:inherit}.reveal .fragment.highlight-red.visible{color:#ff2c2d}.reveal .fragment.highlight-green.visible{color:#17ff2e}.reveal .fragment.highlight-blue.visible{color:#1b91ff}.reveal .fragment.highlight-current-red.current-fragment{color:#ff2c2d}.reveal .fragment.highlight-current-green.current-fragment{color:#17ff2e}.reveal .fragment.highlight-current-blue.current-fragment{color:#1b91ff}.reveal:after{content:"";font-style:italic}.reveal iframe{z-index:1}.reveal a{position:relative}@keyframes bounce-right{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(10px)}30%{transform:translateX(-5px)}}@keyframes bounce-left{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(-10px)}30%{transform:translateX(5px)}}@keyframes bounce-down{0%,10%,25%,40%,50%{transform:translateY(0)}20%{transform:translateY(10px)}30%{transform:translateY(-5px)}}.reveal .controls{display:none;position:absolute;top:auto;bottom:var(--r-controls-spacing);right:var(--r-controls-spacing);left:auto;z-index:11;color:#000;pointer-events:none;font-size:10px}.reveal .controls button{position:absolute;padding:0;background-color:transparent;border:0;outline:0;cursor:pointer;color:currentColor;transform:scale(.9999);transition:color .2s ease,opacity .2s ease,transform .2s ease;z-index:2;pointer-events:auto;font-size:inherit;visibility:hidden;opacity:0;-webkit-appearance:none;-webkit-tap-highlight-color:transparent}.reveal .controls .controls-arrow:after,.reveal .controls .controls-arrow:before{content:"";position:absolute;top:0;left:0;width:2.6em;height:.5em;border-radius:.25em;background-color:currentColor;transition:all .15s ease,background-color .8s ease;transform-origin:.2em 50%;will-change:transform}.reveal .controls .controls-arrow{position:relative;width:3.6em;height:3.6em}.reveal .controls .controls-arrow:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal .controls .controls-arrow:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}.reveal .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(40deg)}.reveal .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-40deg)}.reveal .controls .controls-arrow:active:before{transform:translateX(.5em) translateY(1.55em) rotate(36deg)}.reveal .controls .controls-arrow:active:after{transform:translateX(.5em) translateY(1.55em) rotate(-36deg)}.reveal .controls .navigate-left{right:6.4em;bottom:3.2em;transform:translateX(-10px)}.reveal .controls .navigate-left.highlight{animation:bounce-left 2s 50 both ease-out}.reveal .controls .navigate-right{right:0;bottom:3.2em;transform:translateX(10px)}.reveal .controls .navigate-right .controls-arrow{transform:rotate(180deg)}.reveal .controls .navigate-right.highlight{animation:bounce-right 2s 50 both ease-out}.reveal .controls .navigate-up{right:3.2em;bottom:6.4em;transform:translateY(-10px)}.reveal .controls .navigate-up .controls-arrow{transform:rotate(90deg)}.reveal .controls .navigate-down{right:3.2em;bottom:-1.4em;padding-bottom:1.4em;transform:translateY(10px)}.reveal .controls .navigate-down .controls-arrow{transform:rotate(-90deg)}.reveal .controls .navigate-down.highlight{animation:bounce-down 2s 50 both ease-out}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled{opacity:.3}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled:hover{opacity:1}.reveal .controls[data-controls-back-arrows=hidden] .navigate-up.enabled{opacity:0;visibility:hidden}.reveal .controls .enabled{visibility:visible;opacity:.9;cursor:pointer;transform:none}.reveal .controls .enabled.fragmented{opacity:.5}.reveal .controls .enabled.fragmented:hover,.reveal .controls .enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled{opacity:.3}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=hidden] .navigate-left.enabled{opacity:0;visibility:hidden}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled{opacity:.3}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled:hover{opacity:1}.reveal.rtl .controls[data-controls-back-arrows=hidden] .navigate-right.enabled{opacity:0;visibility:hidden}.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-down,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-up{display:none}.reveal:not(.has-vertical-slides) .controls .navigate-left,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-left{bottom:1.4em;right:5.5em}.reveal:not(.has-vertical-slides) .controls .navigate-right,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-right{bottom:1.4em;right:.5em}.reveal:not(.has-horizontal-slides) .controls .navigate-up{right:1.4em;bottom:5em}.reveal:not(.has-horizontal-slides) .controls .navigate-down{right:1.4em;bottom:.5em}.reveal.has-dark-background .controls{color:#fff}.reveal.has-light-background .controls{color:#000}.reveal.no-hover .controls .controls-arrow:active:before,.reveal.no-hover .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal.no-hover .controls .controls-arrow:active:after,.reveal.no-hover .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}@media screen and (min-width:500px){.reveal-viewport{--r-controls-spacing:0.8em}.reveal .controls[data-controls-layout=edges]{top:0;right:0;bottom:0;left:0}.reveal .controls[data-controls-layout=edges] .navigate-down,.reveal .controls[data-controls-layout=edges] .navigate-left,.reveal .controls[data-controls-layout=edges] .navigate-right,.reveal .controls[data-controls-layout=edges] .navigate-up{bottom:auto;right:auto}.reveal .controls[data-controls-layout=edges] .navigate-left{top:50%;left:var(--r-controls-spacing);margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-right{top:50%;right:var(--r-controls-spacing);margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-up{top:var(--r-controls-spacing);left:50%;margin-left:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-down{bottom:calc(var(--r-controls-spacing) - 1.4em + .3em);left:50%;margin-left:-1.8em}}.reveal .progress{position:absolute;display:none;height:3px;width:100%;bottom:0;left:0;z-index:10;background-color:rgba(0,0,0,.2);color:#fff}.reveal .progress:after{content:"";display:block;position:absolute;height:10px;width:100%;top:-10px}.reveal .progress span{display:block;height:100%;width:100%;background-color:currentColor;transition:transform .8s cubic-bezier(.26,.86,.44,.985);transform-origin:0 0;transform:scaleX(0)}.reveal .slide-number{position:absolute;display:block;right:8px;bottom:8px;z-index:31;font-family:Helvetica,sans-serif;font-size:12px;line-height:1;color:#fff;background-color:rgba(0,0,0,.4);padding:5px}.reveal .slide-number a{color:currentColor}.reveal .slide-number-delimiter{margin:0 3px}.reveal{position:relative;width:100%;height:100%;overflow:hidden;touch-action:pinch-zoom}.reveal.embedded{touch-action:pan-y}.reveal.embedded.is-vertical-slide{touch-action:none}.reveal .slides{position:absolute;width:100%;height:100%;top:0;right:0;bottom:0;left:0;margin:auto;pointer-events:none;overflow:visible;z-index:1;text-align:center;perspective:600px;perspective-origin:50% 40%}.reveal .slides>section{perspective:600px}.reveal .slides>section,.reveal .slides>section>section{display:none;position:absolute;width:100%;pointer-events:auto;z-index:10;transform-style:flat;transition:transform-origin .8s cubic-bezier(.26,.86,.44,.985),transform .8s cubic-bezier(.26,.86,.44,.985),visibility .8s cubic-bezier(.26,.86,.44,.985),opacity .8s cubic-bezier(.26,.86,.44,.985)}.reveal[data-transition-speed=fast] .slides section{transition-duration:.4s}.reveal[data-transition-speed=slow] .slides section{transition-duration:1.2s}.reveal .slides section[data-transition-speed=fast]{transition-duration:.4s}.reveal .slides section[data-transition-speed=slow]{transition-duration:1.2s}.reveal .slides>section.stack{padding-top:0;padding-bottom:0;pointer-events:none;height:100%}.reveal .slides>section.present,.reveal .slides>section>section.present{display:block;z-index:11;opacity:1}.reveal .slides>section:empty,.reveal .slides>section>section:empty,.reveal .slides>section>section[data-background-interactive],.reveal .slides>section[data-background-interactive]{pointer-events:none}.reveal.center,.reveal.center .slides,.reveal.center .slides section{min-height:0!important}.reveal .slides>section:not(.present),.reveal .slides>section>section:not(.present){pointer-events:none}.reveal.overview .slides>section,.reveal.overview .slides>section>section{pointer-events:auto}.reveal .slides>section.future,.reveal .slides>section.future>section,.reveal .slides>section.past,.reveal .slides>section.past>section,.reveal .slides>section>section.future,.reveal .slides>section>section.past{opacity:0}.reveal .slides>section[data-transition=slide].past,.reveal .slides>section[data-transition~=slide-out].past,.reveal.slide .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=slide].future,.reveal .slides>section[data-transition~=slide-in].future,.reveal.slide .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=slide].past,.reveal .slides>section>section[data-transition~=slide-out].past,.reveal.slide .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=slide].future,.reveal .slides>section>section[data-transition~=slide-in].future,.reveal.slide .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal .slides>section[data-transition=linear].past,.reveal .slides>section[data-transition~=linear-out].past,.reveal.linear .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=linear].future,.reveal .slides>section[data-transition~=linear-in].future,.reveal.linear .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=linear].past,.reveal .slides>section>section[data-transition~=linear-out].past,.reveal.linear .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=linear].future,.reveal .slides>section>section[data-transition~=linear-in].future,.reveal.linear .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal .slides section[data-transition=default].stack,.reveal.default .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=default].past,.reveal .slides>section[data-transition~=default-out].past,.reveal.default .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=default].future,.reveal .slides>section[data-transition~=default-in].future,.reveal.default .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=default].past,.reveal .slides>section>section[data-transition~=default-out].past,.reveal.default .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=default].future,.reveal .slides>section>section[data-transition~=default-in].future,.reveal.default .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=convex].stack,.reveal.convex .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=convex].past,.reveal .slides>section[data-transition~=convex-out].past,.reveal.convex .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=convex].future,.reveal .slides>section[data-transition~=convex-in].future,.reveal.convex .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=convex].past,.reveal .slides>section>section[data-transition~=convex-out].past,.reveal.convex .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=convex].future,.reveal .slides>section>section[data-transition~=convex-in].future,.reveal.convex .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=concave].stack,.reveal.concave .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=concave].past,.reveal .slides>section[data-transition~=concave-out].past,.reveal.concave .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=concave].future,.reveal .slides>section[data-transition~=concave-in].future,.reveal.concave .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=concave].past,.reveal .slides>section>section[data-transition~=concave-out].past,.reveal.concave .slides>section>section:not([data-transition]).past{transform:translate3d(0,-80%,0) rotateX(-70deg) translate3d(0,-80%,0)}.reveal .slides>section>section[data-transition=concave].future,.reveal .slides>section>section[data-transition~=concave-in].future,.reveal.concave .slides>section>section:not([data-transition]).future{transform:translate3d(0,80%,0) rotateX(70deg) translate3d(0,80%,0)}.reveal .slides section[data-transition=zoom],.reveal.zoom .slides section:not([data-transition]){transition-timing-function:ease}.reveal .slides>section[data-transition=zoom].past,.reveal .slides>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section:not([data-transition]).past{visibility:hidden;transform:scale(16)}.reveal .slides>section[data-transition=zoom].future,.reveal .slides>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section:not([data-transition]).future{visibility:hidden;transform:scale(.2)}.reveal .slides>section>section[data-transition=zoom].past,.reveal .slides>section>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section>section:not([data-transition]).past{transform:scale(16)}.reveal .slides>section>section[data-transition=zoom].future,.reveal .slides>section>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section>section:not([data-transition]).future{transform:scale(.2)}.reveal.cube .slides{perspective:1300px}.reveal.cube .slides section{padding:30px;min-height:700px;backface-visibility:hidden;box-sizing:border-box;transform-style:preserve-3d}.reveal.center.cube .slides section{min-height:0}.reveal.cube .slides section:not(.stack):before{content:"";position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);border-radius:4px;transform:translateZ(-20px)}.reveal.cube .slides section:not(.stack):after{content:"";position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);transform:translateZ(-90px) rotateX(65deg)}.reveal.cube .slides>section.stack{padding:0;background:0 0}.reveal.cube .slides>section.past{transform-origin:100% 0;transform:translate3d(-100%,0,0) rotateY(-90deg)}.reveal.cube .slides>section.future{transform-origin:0 0;transform:translate3d(100%,0,0) rotateY(90deg)}.reveal.cube .slides>section>section.past{transform-origin:0 100%;transform:translate3d(0,-100%,0) rotateX(90deg)}.reveal.cube .slides>section>section.future{transform-origin:0 0;transform:translate3d(0,100%,0) rotateX(-90deg)}.reveal.page .slides{perspective-origin:0 50%;perspective:3000px}.reveal.page .slides section{padding:30px;min-height:700px;box-sizing:border-box;transform-style:preserve-3d}.reveal.page .slides section.past{z-index:12}.reveal.page .slides section:not(.stack):before{content:"";position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);transform:translateZ(-20px)}.reveal.page .slides section:not(.stack):after{content:"";position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);-webkit-transform:translateZ(-90px) rotateX(65deg)}.reveal.page .slides>section.stack{padding:0;background:0 0}.reveal.page .slides>section.past{transform-origin:0 0;transform:translate3d(-40%,0,0) rotateY(-80deg)}.reveal.page .slides>section.future{transform-origin:100% 0;transform:translate3d(0,0,0)}.reveal.page .slides>section>section.past{transform-origin:0 0;transform:translate3d(0,-40%,0) rotateX(80deg)}.reveal.page .slides>section>section.future{transform-origin:0 100%;transform:translate3d(0,0,0)}.reveal .slides section[data-transition=fade],.reveal.fade .slides section:not([data-transition]),.reveal.fade .slides>section>section:not([data-transition]){transform:none;transition:opacity .5s}.reveal.fade.overview .slides section,.reveal.fade.overview .slides>section>section{transition:none}.reveal .slides section[data-transition=none],.reveal.none .slides section:not([data-transition]){transform:none;transition:none}.reveal .pause-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;visibility:hidden;opacity:0;z-index:100;transition:all 1s ease}.reveal .pause-overlay .resume-button{position:absolute;bottom:20px;right:20px;color:#ccc;border-radius:2px;padding:6px 14px;border:2px solid #ccc;font-size:16px;background:0 0;cursor:pointer}.reveal .pause-overlay .resume-button:hover{color:#fff;border-color:#fff}.reveal.paused .pause-overlay{visibility:visible;opacity:1}.reveal .no-transition,.reveal .no-transition *,.reveal .slides.disable-slide-transitions section{transition:none!important}.reveal .slides.disable-slide-transitions section{transform:none!important}.reveal .backgrounds{position:absolute;width:100%;height:100%;top:0;left:0;perspective:600px}.reveal .slide-background{display:none;position:absolute;width:100%;height:100%;opacity:0;visibility:hidden;overflow:hidden;background-color:rgba(0,0,0,0);transition:all .8s cubic-bezier(.26,.86,.44,.985)}.reveal .slide-background-content{position:absolute;width:100%;height:100%;background-position:50% 50%;background-repeat:no-repeat;background-size:cover}.reveal .slide-background.stack{display:block}.reveal .slide-background.present{opacity:1;visibility:visible;z-index:2}.print-pdf .reveal .slide-background{opacity:1!important;visibility:visible!important}.reveal .slide-background video{position:absolute;width:100%;height:100%;max-width:none;max-height:none;top:0;left:0;object-fit:cover}.reveal .slide-background[data-background-size=contain] video{object-fit:contain}.reveal>.backgrounds .slide-background[data-background-transition=none],.reveal[data-background-transition=none]>.backgrounds .slide-background:not([data-background-transition]){transition:none}.reveal>.backgrounds .slide-background[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background:not([data-background-transition]){opacity:1}.reveal>.backgrounds .slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.past:not([data-background-transition]){transform:translate(-100%,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.future:not([data-background-transition]){transform:translate(100%,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.past:not([data-background-transition]){transform:translate(0,-100%)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.future:not([data-background-transition]){transform:translate(0,100%)}.reveal>.backgrounds .slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.past:not([data-background-transition]){opacity:0;transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.future:not([data-background-transition]){opacity:0;transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.past:not([data-background-transition]){opacity:0;transform:translate3d(0,-100%,0) rotateX(90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.future:not([data-background-transition]){opacity:0;transform:translate3d(0,100%,0) rotateX(-90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.past:not([data-background-transition]){opacity:0;transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.future:not([data-background-transition]){opacity:0;transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.past:not([data-background-transition]){opacity:0;transform:translate3d(0,-100%,0) rotateX(-90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.future:not([data-background-transition]){opacity:0;transform:translate3d(0,100%,0) rotateX(90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background:not([data-background-transition]){transition-timing-function:ease}.reveal>.backgrounds .slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.past:not([data-background-transition]){opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.future:not([data-background-transition]){opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.past:not([data-background-transition]){opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.future:not([data-background-transition]){opacity:0;visibility:hidden;transform:scale(.2)}.reveal[data-transition-speed=fast]>.backgrounds .slide-background{transition-duration:.4s}.reveal[data-transition-speed=slow]>.backgrounds .slide-background{transition-duration:1.2s}.reveal [data-auto-animate-target^=unmatched]{will-change:opacity}.reveal section[data-auto-animate]:not(.stack):not([data-auto-animate=running]) [data-auto-animate-target^=unmatched]{opacity:0}.reveal.overview{perspective-origin:50% 50%;perspective:700px}.reveal.overview .slides{-moz-transform-style:preserve-3d}.reveal.overview .slides section{height:100%;top:0!important;opacity:1!important;overflow:hidden;visibility:visible!important;cursor:pointer;box-sizing:border-box}.reveal.overview .slides section.present,.reveal.overview .slides section:hover{outline:10px solid rgba(150,150,150,.4);outline-offset:10px}.reveal.overview .slides section .fragment{opacity:1;transition:none}.reveal.overview .slides section:after,.reveal.overview .slides section:before{display:none!important}.reveal.overview .slides>section.stack{padding:0;top:0!important;background:0 0;outline:0;overflow:visible}.reveal.overview .backgrounds{perspective:inherit;-moz-transform-style:preserve-3d}.reveal.overview .backgrounds .slide-background{opacity:1;visibility:visible;outline:10px solid rgba(150,150,150,.1);outline-offset:10px}.reveal.overview .backgrounds .slide-background.stack{overflow:visible}.reveal.overview .slides section,.reveal.overview-deactivating .slides section{transition:none}.reveal.overview .backgrounds .slide-background,.reveal.overview-deactivating .backgrounds .slide-background{transition:none}.reveal.rtl .slides,.reveal.rtl .slides h1,.reveal.rtl .slides h2,.reveal.rtl .slides h3,.reveal.rtl .slides h4,.reveal.rtl .slides h5,.reveal.rtl .slides h6{direction:rtl;font-family:sans-serif}.reveal.rtl code,.reveal.rtl pre{direction:ltr}.reveal.rtl ol,.reveal.rtl ul{text-align:right}.reveal.rtl .progress span{transform-origin:100% 0}.reveal.has-parallax-background .backgrounds{transition:all .8s ease}.reveal.has-parallax-background[data-transition-speed=fast] .backgrounds{transition-duration:.4s}.reveal.has-parallax-background[data-transition-speed=slow] .backgrounds{transition-duration:1.2s}.reveal>.overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1000;background:rgba(0,0,0,.95);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:all .3s ease}.reveal>.overlay .spinner{position:absolute;display:block;top:50%;left:50%;width:32px;height:32px;margin:-16px 0 0 -16px;z-index:10;background-image:url(data:image/gif;base64,R0lGODlhIAAgAPMAAJmZmf%2F%2F%2F6%2Bvr8nJybW1tcDAwOjo6Nvb26ioqKOjo7Ozs%2FLy8vz8%2FAAAAAAAAAAAACH%2FC05FVFNDQVBFMi4wAwEAAAAh%2FhpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh%2BQQJCgAAACwAAAAAIAAgAAAE5xDISWlhperN52JLhSSdRgwVo1ICQZRUsiwHpTJT4iowNS8vyW2icCF6k8HMMBkCEDskxTBDAZwuAkkqIfxIQyhBQBFvAQSDITM5VDW6XNE4KagNh6Bgwe60smQUB3d4Rz1ZBApnFASDd0hihh12BkE9kjAJVlycXIg7CQIFA6SlnJ87paqbSKiKoqusnbMdmDC2tXQlkUhziYtyWTxIfy6BE8WJt5YJvpJivxNaGmLHT0VnOgSYf0dZXS7APdpB309RnHOG5gDqXGLDaC457D1zZ%2FV%2FnmOM82XiHRLYKhKP1oZmADdEAAAh%2BQQJCgAAACwAAAAAIAAgAAAE6hDISWlZpOrNp1lGNRSdRpDUolIGw5RUYhhHukqFu8DsrEyqnWThGvAmhVlteBvojpTDDBUEIFwMFBRAmBkSgOrBFZogCASwBDEY%2FCZSg7GSE0gSCjQBMVG023xWBhklAnoEdhQEfyNqMIcKjhRsjEdnezB%2BA4k8gTwJhFuiW4dokXiloUepBAp5qaKpp6%2BHo7aWW54wl7obvEe0kRuoplCGepwSx2jJvqHEmGt6whJpGpfJCHmOoNHKaHx61WiSR92E4lbFoq%2BB6QDtuetcaBPnW6%2BO7wDHpIiK9SaVK5GgV543tzjgGcghAgAh%2BQQJCgAAACwAAAAAIAAgAAAE7hDISSkxpOrN5zFHNWRdhSiVoVLHspRUMoyUakyEe8PTPCATW9A14E0UvuAKMNAZKYUZCiBMuBakSQKG8G2FzUWox2AUtAQFcBKlVQoLgQReZhQlCIJesQXI5B0CBnUMOxMCenoCfTCEWBsJColTMANldx15BGs8B5wlCZ9Po6OJkwmRpnqkqnuSrayqfKmqpLajoiW5HJq7FL1Gr2mMMcKUMIiJgIemy7xZtJsTmsM4xHiKv5KMCXqfyUCJEonXPN2rAOIAmsfB3uPoAK%2B%2BG%2Bw48edZPK%2BM6hLJpQg484enXIdQFSS1u6UhksENEQAAIfkECQoAAAAsAAAAACAAIAAABOcQyEmpGKLqzWcZRVUQnZYg1aBSh2GUVEIQ2aQOE%2BG%2BcD4ntpWkZQj1JIiZIogDFFyHI0UxQwFugMSOFIPJftfVAEoZLBbcLEFhlQiqGp1Vd140AUklUN3eCA51C1EWMzMCezCBBmkxVIVHBWd3HHl9JQOIJSdSnJ0TDKChCwUJjoWMPaGqDKannasMo6WnM562R5YluZRwur0wpgqZE7NKUm%2BFNRPIhjBJxKZteWuIBMN4zRMIVIhffcgojwCF117i4nlLnY5ztRLsnOk%2BaV%2BoJY7V7m76PdkS4trKcdg0Zc0tTcKkRAAAIfkECQoAAAAsAAAAACAAIAAABO4QyEkpKqjqzScpRaVkXZWQEximw1BSCUEIlDohrft6cpKCk5xid5MNJTaAIkekKGQkWyKHkvhKsR7ARmitkAYDYRIbUQRQjWBwJRzChi9CRlBcY1UN4g0%2FVNB0AlcvcAYHRyZPdEQFYV8ccwR5HWxEJ02YmRMLnJ1xCYp0Y5idpQuhopmmC2KgojKasUQDk5BNAwwMOh2RtRq5uQuPZKGIJQIGwAwGf6I0JXMpC8C7kXWDBINFMxS4DKMAWVWAGYsAdNqW5uaRxkSKJOZKaU3tPOBZ4DuK2LATgJhkPJMgTwKCdFjyPHEnKxFCDhEAACH5BAkKAAAALAAAAAAgACAAAATzEMhJaVKp6s2nIkolIJ2WkBShpkVRWqqQrhLSEu9MZJKK9y1ZrqYK9WiClmvoUaF8gIQSNeF1Er4MNFn4SRSDARWroAIETg1iVwuHjYB1kYc1mwruwXKC9gmsJXliGxc%2BXiUCby9ydh1sOSdMkpMTBpaXBzsfhoc5l58Gm5yToAaZhaOUqjkDgCWNHAULCwOLaTmzswadEqggQwgHuQsHIoZCHQMMQgQGubVEcxOPFAcMDAYUA85eWARmfSRQCdcMe0zeP1AAygwLlJtPNAAL19DARdPzBOWSm1brJBi45soRAWQAAkrQIykShQ9wVhHCwCQCACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiRMDjI0Fd30%2FiI2UA5GSS5UDj2l6NoqgOgN4gksEBgYFf0FDqKgHnyZ9OX8HrgYHdHpcHQULXAS2qKpENRg7eAMLC7kTBaixUYFkKAzWAAnLC7FLVxLWDBLKCwaKTULgEwbLA4hJtOkSBNqITT3xEgfLpBtzE%2FjiuL04RGEBgwWhShRgQExHBAAh%2BQQJCgAAACwAAAAAIAAgAAAE7xDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfZiCqGk5dTESJeaOAlClzsJsqwiJwiqnFrb2nS9kmIcgEsjQydLiIlHehhpejaIjzh9eomSjZR%2BipslWIRLAgMDOR2DOqKogTB9pCUJBagDBXR6XB0EBkIIsaRsGGMMAxoDBgYHTKJiUYEGDAzHC9EACcUGkIgFzgwZ0QsSBcXHiQvOwgDdEwfFs0sDzt4S6BK4xYjkDOzn0unFeBzOBijIm1Dgmg5YFQwsCMjp1oJ8LyIAACH5BAkKAAAALAAAAAAgACAAAATwEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GGl6NoiPOH16iZKNlH6KmyWFOggHhEEvAwwMA0N9GBsEC6amhnVcEwavDAazGwIDaH1ipaYLBUTCGgQDA8NdHz0FpqgTBwsLqAbWAAnIA4FWKdMLGdYGEgraigbT0OITBcg5QwPT4xLrROZL6AuQAPUS7bxLpoWidY0JtxLHKhwwMJBTHgPKdEQAACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GAULDJCRiXo1CpGXDJOUjY%2BYip9DhToJA4RBLwMLCwVDfRgbBAaqqoZ1XBMHswsHtxtFaH1iqaoGNgAIxRpbFAgfPQSqpbgGBqUD1wBXeCYp1AYZ19JJOYgH1KwA4UBvQwXUBxPqVD9L3sbp2BNk2xvvFPJd%2BMFCN6HAAIKgNggY0KtEBAAh%2BQQJCgAAACwAAAAAIAAgAAAE6BDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfYIDMaAFdTESJeaEDAIMxYFqrOUaNW4E4ObYcCXaiBVEgULe0NJaxxtYksjh2NLkZISgDgJhHthkpU4mW6blRiYmZOlh4JWkDqILwUGBnE6TYEbCgevr0N1gH4At7gHiRpFaLNrrq8HNgAJA70AWxQIH1%2BvsYMDAzZQPC9VCNkDWUhGkuE5PxJNwiUK4UfLzOlD4WvzAHaoG9nxPi5d%2BjYUqfAhhykOFwJWiAAAIfkECQoAAAAsAAAAACAAIAAABPAQyElpUqnqzaciSoVkXVUMFaFSwlpOCcMYlErAavhOMnNLNo8KsZsMZItJEIDIFSkLGQoQTNhIsFehRww2CQLKF0tYGKYSg%2BygsZIuNqJksKgbfgIGepNo2cIUB3V1B3IvNiBYNQaDSTtfhhx0CwVPI0UJe0%2Bbm4g5VgcGoqOcnjmjqDSdnhgEoamcsZuXO1aWQy8KAwOAuTYYGwi7w5h%2BKr0SJ8MFihpNbx%2B4Erq7BYBuzsdiH1jCAzoSfl0rVirNbRXlBBlLX%2BBP0XJLAPGzTkAuAOqb0WT5AH7OcdCm5B8TgRwSRKIHQtaLCwg1RAAAOwAAAAAAAAAAAA%3D%3D);visibility:visible;opacity:.6;transition:all .3s ease}.reveal>.overlay header{position:absolute;left:0;top:0;width:100%;padding:5px;z-index:2;box-sizing:border-box}.reveal>.overlay header a{display:inline-block;width:40px;height:40px;line-height:36px;padding:0 10px;float:right;opacity:.6;box-sizing:border-box}.reveal>.overlay header a:hover{opacity:1}.reveal>.overlay header a .icon{display:inline-block;width:20px;height:20px;background-position:50% 50%;background-size:100%;background-repeat:no-repeat}.reveal>.overlay header a.close .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABkklEQVRYR8WX4VHDMAxG6wnoJrABZQPYBCaBTWAD2g1gE5gg6OOsXuxIlr40d81dfrSJ9V4c2VLK7spHuTJ/5wpM07QXuXc5X0opX2tEJcadjHuV80li/FgxTIEK/5QBCICBD6xEhSMGHgQPgBgLiYVAB1dpSqKDawxTohFw4JSEA3clzgIBPCURwE2JucBR7rhPJJv5OpJwDX+SfDjgx1wACQeJG1aChP9K/IMmdZ8DtESV1WyP3Bt4MwM6sj4NMxMYiqUWHQu4KYA/SYkIjOsm3BXYWMKFDwU2khjCQ4ELJUJ4SmClRArOCmSXGuKma0fYD5CbzHxFpCSGAhfAVSSUGDUk2BWZaff2g6GE15BsBQ9nwmpIGDiyHQddwNTMKkbZaf9fajXQca1EX44puJZUsnY0ObGmITE3GVLCbEhQUjGVt146j6oasWN+49Vph2w1pZ5EansNZqKBm1txbU57iRRcZ86RWMDdWtBJUHBHwoQPi1GV+JCbntmvok7iTX4/Up9mgyTc/FJYDTcndgH/AA5A/CHsyEkVAAAAAElFTkSuQmCC)}.reveal>.overlay header a.external .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAcElEQVRYR+2WSQoAIQwEzf8f7XiOMkUQxUPlGkM3hVmiQfQR9GYnH1SsAQlI4DiBqkCMoNb9y2e90IAEJPAcgdznU9+engMaeJ7Azh5Y1U67gAho4DqBqmB1buAf0MB1AlVBek83ZPkmJMGc1wAR+AAqod/B97TRpQAAAABJRU5ErkJggg==)}.reveal>.overlay .viewport{position:absolute;display:flex;top:50px;right:0;bottom:0;left:0}.reveal>.overlay.overlay-preview .viewport iframe{width:100%;height:100%;max-width:100%;max-height:100%;border:0;opacity:0;visibility:hidden;transition:all .3s ease}.reveal>.overlay.overlay-preview.loaded .viewport iframe{opacity:1;visibility:visible}.reveal>.overlay.overlay-preview.loaded .viewport-inner{position:absolute;z-index:-1;left:0;top:45%;width:100%;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-preview .x-frame-error{opacity:0;transition:opacity .3s ease .3s}.reveal>.overlay.overlay-preview.loaded .x-frame-error{opacity:1}.reveal>.overlay.overlay-preview.loaded .spinner{opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.overlay.overlay-help .viewport{overflow:auto;color:#fff}.reveal>.overlay.overlay-help .viewport .viewport-inner{width:600px;margin:auto;padding:20px 20px 80px 20px;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-help .viewport .viewport-inner .title{font-size:20px}.reveal>.overlay.overlay-help .viewport .viewport-inner table{border:1px solid #fff;border-collapse:collapse;font-size:16px}.reveal>.overlay.overlay-help .viewport .viewport-inner table td,.reveal>.overlay.overlay-help .viewport .viewport-inner table th{width:200px;padding:14px;border:1px solid #fff;vertical-align:middle}.reveal>.overlay.overlay-help .viewport .viewport-inner table th{padding-top:20px;padding-bottom:20px}.reveal .playback{position:absolute;left:15px;bottom:20px;z-index:30;cursor:pointer;transition:all .4s ease;-webkit-tap-highlight-color:transparent}.reveal.overview .playback{opacity:0;visibility:hidden}.reveal .hljs{min-height:100%}.reveal .hljs table{margin:initial}.reveal .hljs-ln-code,.reveal .hljs-ln-numbers{padding:0;border:0}.reveal .hljs-ln-numbers{opacity:.6;padding-right:.75em;text-align:right;vertical-align:top}.reveal .hljs.has-highlights tr:not(.highlight-line){opacity:.4}.reveal .hljs.has-highlights.fragment{transition:all .2s ease}.reveal .hljs:not(:first-child).fragment{position:absolute;top:0;left:0;width:100%;box-sizing:border-box}.reveal pre[data-auto-animate-target]{overflow:hidden}.reveal pre[data-auto-animate-target] code{height:100%}.reveal .roll{display:inline-block;line-height:1.2;overflow:hidden;vertical-align:top;perspective:400px;perspective-origin:50% 50%}.reveal .roll:hover{background:0 0;text-shadow:none}.reveal .roll span{display:block;position:relative;padding:0 2px;pointer-events:none;transition:all .4s ease;transform-origin:50% 0;transform-style:preserve-3d;backface-visibility:hidden}.reveal .roll:hover span{background:rgba(0,0,0,.5);transform:translate3d(0,0,-45px) rotateX(90deg)}.reveal .roll span:after{content:attr(data-title);display:block;position:absolute;left:0;top:0;padding:0 2px;backface-visibility:hidden;transform-origin:50% 0;transform:translate3d(0,110%,0) rotateX(-90deg)}.reveal aside.notes{display:none}.reveal .speaker-notes{display:none;position:absolute;width:33.3333333333%;height:100%;top:0;left:100%;padding:14px 18px 14px 18px;z-index:1;font-size:18px;line-height:1.4;border:1px solid rgba(0,0,0,.05);color:#222;background-color:#f5f5f5;overflow:auto;box-sizing:border-box;text-align:left;font-family:Helvetica,sans-serif;-webkit-overflow-scrolling:touch}.reveal .speaker-notes .notes-placeholder{color:#ccc;font-style:italic}.reveal .speaker-notes:focus{outline:0}.reveal .speaker-notes:before{content:"Speaker notes";display:block;margin-bottom:10px;opacity:.5}.reveal.show-notes{max-width:75%;overflow:visible}.reveal.show-notes .speaker-notes{display:block}@media screen and (min-width:1600px){.reveal .speaker-notes{font-size:20px}}@media screen and (max-width:1024px){.reveal.show-notes{border-left:0;max-width:none;max-height:70%;max-height:70vh;overflow:visible}.reveal.show-notes .speaker-notes{top:100%;left:0;width:100%;height:30vh;border:0}}@media screen and (max-width:600px){.reveal.show-notes{max-height:60%;max-height:60vh}.reveal.show-notes .speaker-notes{top:100%;height:40vh}.reveal .speaker-notes{font-size:14px}}.reveal .jump-to-slide{position:absolute;top:15px;left:15px;z-index:30;font-size:32px;-webkit-tap-highlight-color:transparent}.reveal .jump-to-slide-input{background:0 0;padding:8px;font-size:inherit;color:currentColor;border:0}.reveal .jump-to-slide-input::placeholder{color:currentColor;opacity:.5}.reveal.has-dark-background .jump-to-slide-input{color:#fff}.reveal.has-light-background .jump-to-slide-input{color:#222}.reveal .jump-to-slide-input:focus{outline:0}.zoomed .reveal *,.zoomed .reveal :after,.zoomed .reveal :before{backface-visibility:visible!important}.zoomed .reveal .controls,.zoomed .reveal .progress{opacity:0}.zoomed .reveal .roll span{background:0 0}.zoomed .reveal .roll span:after{visibility:hidden}.reveal-viewport.loading-scroll-mode{visibility:hidden}.reveal-viewport.reveal-scroll{margin:0 auto;overflow:auto;overflow-x:hidden;overflow-y:auto;z-index:1;--r-scrollbar-width:7px;--r-scrollbar-trigger-size:5px;--r-controls-spacing:8px}@media screen and (max-width:500px){.reveal-viewport.reveal-scroll{--r-scrollbar-width:3px;--r-scrollbar-trigger-size:3px}}.reveal-viewport.reveal-scroll .backgrounds,.reveal-viewport.reveal-scroll .controls,.reveal-viewport.reveal-scroll .playback,.reveal-viewport.reveal-scroll .progress,.reveal-viewport.reveal-scroll .slide-number,.reveal-viewport.reveal-scroll .speaker-notes{display:none!important}.reveal-viewport.reveal-scroll .overlay,.reveal-viewport.reveal-scroll .pause-overlay{position:fixed}.reveal-viewport.reveal-scroll .reveal{overflow:visible;touch-action:manipulation}.reveal-viewport.reveal-scroll .slides{position:static;pointer-events:initial;left:auto;top:auto;width:100%!important;margin:0;padding:0;overflow:visible;display:block;perspective:none;perspective-origin:50% 50%}.reveal-viewport.reveal-scroll .scroll-page{position:relative;width:100%;height:calc(var(--page-height) + var(--page-scroll-padding));z-index:1;overflow:visible}.reveal-viewport.reveal-scroll .scroll-page-sticky{position:sticky;height:var(--page-height);top:0}.reveal-viewport.reveal-scroll .scroll-page-content{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden}.reveal-viewport.reveal-scroll .scroll-page section{visibility:visible!important;display:block!important;position:absolute!important;width:var(--slide-width)!important;height:var(--slide-height)!important;top:50%!important;left:50%!important;opacity:1!important;transform:scale(var(--slide-scale)) translate(-50%,-50%)!important;transform-style:flat!important;transform-origin:0 0!important}.reveal-viewport.reveal-scroll .slide-background{display:block!important;position:absolute;top:0;left:0;width:100%;height:100%;z-index:auto!important;visibility:visible;opacity:1;touch-action:manipulation}.reveal-viewport.reveal-scroll[data-scrollbar=auto]::-webkit-scrollbar,.reveal-viewport.reveal-scroll[data-scrollbar=true]::-webkit-scrollbar{display:none}.reveal-viewport.reveal-scroll[data-scrollbar=auto],.reveal-viewport.reveal-scroll[data-scrollbar=true]{scrollbar-width:none}.reveal-viewport.has-dark-background,.reveal.has-dark-background{--r-overlay-element-bg-color:240,240,240;--r-overlay-element-fg-color:0,0,0}.reveal-viewport.has-light-background,.reveal.has-light-background{--r-overlay-element-bg-color:0,0,0;--r-overlay-element-fg-color:240,240,240}.reveal-viewport.reveal-scroll .scrollbar{position:sticky;top:50%;z-index:20;opacity:0;transition:all .3s ease}.reveal-viewport.reveal-scroll .scrollbar.visible,.reveal-viewport.reveal-scroll .scrollbar:hover{opacity:1}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-inner{position:absolute;width:var(--r-scrollbar-width);height:calc(var(--viewport-height) - var(--r-controls-spacing) * 2);right:var(--r-controls-spacing);top:0;transform:translateY(-50%);border-radius:var(--r-scrollbar-width);z-index:10}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-playhead{position:absolute;width:var(--r-scrollbar-width);height:var(--r-scrollbar-width);top:0;left:0;border-radius:var(--r-scrollbar-width);background-color:rgba(var(--r-overlay-element-bg-color),1);z-index:11;transition:background-color .2s ease}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide{position:absolute;width:100%;background-color:rgba(var(--r-overlay-element-bg-color),.2);box-shadow:0 0 0 1px rgba(var(--r-overlay-element-fg-color),.1);border-radius:var(--r-scrollbar-width);transition:background-color .2s ease}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide:after{content:"";position:absolute;width:200%;height:100%;top:0;left:-50%;background:rgba(0,0,0,0);z-index:-1}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active,.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide:hover{background-color:rgba(var(--r-overlay-element-bg-color),.4)}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-trigger{position:absolute;width:100%;transition:background-color .2s ease}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active.has-triggers{background-color:rgba(var(--r-overlay-element-bg-color),.4);z-index:10}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active .scrollbar-trigger:after{content:"";position:absolute;width:var(--r-scrollbar-trigger-size);height:var(--r-scrollbar-trigger-size);border-radius:20px;top:50%;left:50%;transform:translate(-50%,-50%);background-color:rgba(var(--r-overlay-element-bg-color),1);transition:transform .2s ease,opacity .2s ease;opacity:.4}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active .scrollbar-trigger.active:after,.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active .scrollbar-trigger.active~.scrollbar-trigger:after{opacity:1}.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active .scrollbar-trigger~.scrollbar-trigger.active:after{transform:translate(calc(var(--r-scrollbar-width) * -2),0);background-color:rgba(var(--r-overlay-element-bg-color),1)}html.reveal-print *{-webkit-print-color-adjust:exact}html.reveal-print{width:100%;height:100%;overflow:visible}html.reveal-print body{margin:0 auto!important;border:0;padding:0;float:none!important;overflow:visible}html.reveal-print .nestedarrow,html.reveal-print .reveal .controls,html.reveal-print .reveal .playback,html.reveal-print .reveal .progress,html.reveal-print .reveal.overview,html.reveal-print .state-background{display:none!important}html.reveal-print .reveal pre code{overflow:hidden!important}html.reveal-print .reveal{width:auto!important;height:auto!important;overflow:hidden!important}html.reveal-print .reveal .slides{position:static;width:100%!important;height:auto!important;zoom:1!important;pointer-events:initial;left:auto;top:auto;margin:0!important;padding:0!important;overflow:visible;display:block;perspective:none;perspective-origin:50% 50%}html.reveal-print .reveal .slides .pdf-page{position:relative;overflow:hidden;z-index:1;page-break-after:always}html.reveal-print .reveal .slides .pdf-page:last-of-type{page-break-after:avoid}html.reveal-print .reveal .slides section{visibility:visible!important;display:block!important;position:absolute!important;margin:0!important;padding:0!important;box-sizing:border-box!important;min-height:1px;opacity:1!important;transform-style:flat!important;transform:none!important}html.reveal-print .reveal section.stack{position:relative!important;margin:0!important;padding:0!important;page-break-after:avoid!important;height:auto!important;min-height:auto!important}html.reveal-print .reveal img{box-shadow:none}html.reveal-print .reveal .backgrounds{display:none}html.reveal-print .reveal .slide-background{display:block!important;position:absolute;top:0;left:0;width:100%;height:100%;z-index:auto!important}html.reveal-print .reveal.show-notes{max-width:none;max-height:none}html.reveal-print .reveal .speaker-notes-pdf{display:block;width:100%;height:auto;max-height:none;top:auto;right:auto;bottom:auto;left:auto;z-index:100}html.reveal-print .reveal .speaker-notes-pdf[data-layout=separate-page]{position:relative;color:inherit;background-color:transparent;padding:20px;page-break-after:always;border:0}html.reveal-print .reveal .slide-number-pdf{display:block;position:absolute;font-size:14px;visibility:visible}html.reveal-print .aria-status{display:none}@media print{html:not(.print-pdf){overflow:visible;width:auto;height:auto}html:not(.print-pdf) body{margin:0;padding:0;overflow:visible}html:not(.print-pdf) .reveal{background:#fff;font-size:20pt}html:not(.print-pdf) .reveal .backgrounds,html:not(.print-pdf) .reveal .controls,html:not(.print-pdf) .reveal .progress,html:not(.print-pdf) .reveal .slide-number,html:not(.print-pdf) .reveal .state-background{display:none!important}html:not(.print-pdf) .reveal li,html:not(.print-pdf) .reveal p,html:not(.print-pdf) .reveal td{font-size:20pt!important;color:#000}html:not(.print-pdf) .reveal h1,html:not(.print-pdf) .reveal h2,html:not(.print-pdf) .reveal h3,html:not(.print-pdf) .reveal h4,html:not(.print-pdf) .reveal h5,html:not(.print-pdf) .reveal h6{color:#000!important;height:auto;line-height:normal;text-align:left;letter-spacing:normal}html:not(.print-pdf) .reveal h1{font-size:28pt!important}html:not(.print-pdf) .reveal h2{font-size:24pt!important}html:not(.print-pdf) .reveal h3{font-size:22pt!important}html:not(.print-pdf) .reveal h4{font-size:22pt!important;font-variant:small-caps}html:not(.print-pdf) .reveal h5{font-size:21pt!important}html:not(.print-pdf) .reveal h6{font-size:20pt!important;font-style:italic}html:not(.print-pdf) .reveal a:link,html:not(.print-pdf) .reveal a:visited{color:#000!important;font-weight:700;text-decoration:underline}html:not(.print-pdf) .reveal div,html:not(.print-pdf) .reveal ol,html:not(.print-pdf) .reveal p,html:not(.print-pdf) .reveal ul{visibility:visible;position:static;width:auto;height:auto;display:block;overflow:visible;margin:0;text-align:left!important}html:not(.print-pdf) .reveal pre,html:not(.print-pdf) .reveal table{margin-left:0;margin-right:0}html:not(.print-pdf) .reveal pre code{padding:20px}html:not(.print-pdf) .reveal blockquote{margin:20px 0}html:not(.print-pdf) .reveal .slides{position:static!important;width:auto!important;height:auto!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:0!important;zoom:1!important;transform:none!important;overflow:visible!important;display:block!important;text-align:left!important;perspective:none;perspective-origin:50% 50%}html:not(.print-pdf) .reveal .slides section{visibility:visible!important;position:static!important;width:auto!important;height:auto!important;display:block!important;overflow:visible!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:60px 20px!important;z-index:auto!important;opacity:1!important;page-break-after:always!important;transform-style:flat!important;transform:none!important;transition:none!important}html:not(.print-pdf) .reveal .slides section.stack{padding:0!important}html:not(.print-pdf) .reveal .slides section:last-of-type{page-break-after:avoid!important}html:not(.print-pdf) .reveal .slides section .fragment{opacity:1!important;visibility:visible!important;transform:none!important}html:not(.print-pdf) .reveal .r-fit-text{white-space:normal!important}html:not(.print-pdf) .reveal section img{display:block;margin:15px 0;background:#fff;border:1px solid #666;box-shadow:none}html:not(.print-pdf) .reveal section small{font-size:.8em}html:not(.print-pdf) .reveal .hljs{max-height:100%;white-space:pre-wrap;word-wrap:break-word;word-break:break-word;font-size:15pt}html:not(.print-pdf) .reveal .hljs .hljs-ln-numbers{white-space:nowrap}html:not(.print-pdf) .reveal .hljs td{font-size:inherit!important;color:inherit!important}}
+
+/* ===== Theme: "Case File" =====================================
+   Two grounds, alternating:
+     .file   — manila/paper. The investigation. Typewriter voice.
+     .card   — dark screen. The cinema. Archivo, centred.
+   ============================================================= */
+:root{
+  --screen:#17130f;        /* projector-off screen, warm not blue */
+  --screen-2:#0d0a08;
+  --manila:#cbbb9b;        /* case folder */
+  --paper:#e9e1d0;         /* report paper */
+  --graphite:#2b2622;      /* pencil & typewriter ink */
+  --graphite-soft:#5d554c;
+  --lamp:#e0a03a;          /* tungsten */
+  --stamp:#a5312a;         /* rubber-stamp ink */
+  --rule:rgba(43,38,34,.22);
+}
+
+.reveal-viewport{background:#080706;}
+.reveal{
+  font-family:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:30px; font-weight:400; color:var(--graphite);
+  -webkit-font-smoothing:antialiased;
+}
+.reveal ::selection{background:var(--lamp);color:var(--screen);}
+
+/* --- slide grounds --- */
+.reveal .slides section{
+  height:100%; padding:0; text-align:left;
+  box-sizing:border-box;
+}
+.reveal .slides>section.file,
+.reveal .slides>section.file.present{
+  background:var(--paper); color:var(--graphite);
+  padding:5.5rem 6rem 4.5rem;
+  display:flex !important; flex-direction:column; justify-content:center;
+  background-image:
+    radial-gradient(120% 90% at 50% -20%, rgba(255,255,255,.55), transparent 60%),
+    radial-gradient(90% 80% at 110% 120%, rgba(120,100,70,.14), transparent 60%);
+}
+.reveal .slides>section.card,
+.reveal .slides>section.card.present{
+  background:var(--screen); color:var(--paper);
+  padding:5.5rem 6rem;
+  display:flex !important; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center;
+  background-image:radial-gradient(75% 65% at 50% 45%, rgba(224,160,58,.10), transparent 70%);
+}
+.reveal .slides>section.card.left,
+.reveal .slides>section.card.left.present{align-items:flex-start; text-align:left;}
+.reveal .slides>section.plate,
+.reveal .slides>section.plate.present{background:var(--screen-2); background-image:none;}
+
+/* grain: one shared texture over every slide, very low */
+.reveal .slides section::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  opacity:.16; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* --- type scale --- */
+.reveal h1,.reveal h2,.reveal h3{
+  font-family:'Archivo',sans-serif; font-weight:800;
+  text-transform:none; letter-spacing:-.022em; line-height:1.02;
+  margin:0 0 .55em; color:inherit;
+}
+.reveal h1{font-size:2.55em;}
+.reveal h2{font-size:1.78em;}
+.reveal h3{font-size:1.16em; font-weight:600; letter-spacing:-.012em;}
+.reveal p{line-height:1.42; margin:0 0 .8em; max-width:30ch;}
+.reveal section.file p,.reveal section.file li{max-width:34ch;}
+.reveal .wide p,.reveal .wide li{max-width:44ch;}
+.reveal strong{font-weight:800;}
+.reveal em{font-style:normal; color:var(--stamp);}
+.reveal section.card em{color:var(--lamp);}
+
+.reveal ul{margin:0 0 .8em; padding-left:1.15em; list-style:none;}
+.reveal ul li{position:relative; line-height:1.34; margin-bottom:.5em;}
+.reveal ul li::before{
+  content:""; position:absolute; left:-1.15em; top:.55em;
+  width:.42em; height:1px; background:currentColor; opacity:.5;
+}
+.reveal ol{margin:0 0 .8em; padding-left:1.5em;}
+.reveal ol li{line-height:1.34; margin-bottom:.55em;}
+
+/* --- typewriter voice: the case-file furniture --- */
+.tw{font-family:'Special Elite',ui-monospace,monospace; font-weight:400;}
+
+.tab{ /* folder tab, top-left of every file slide */
+  position:absolute; top:0; left:6rem;
+  font-family:'Special Elite',monospace; font-size:.5em;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--graphite); background:var(--manila);
+  padding:.7em 1.5em .55em; border-radius:0 0 3px 3px;
+}
+.folio{ /* bottom-right case reference */
+  position:absolute; bottom:2.4rem; right:6rem;
+  font-family:'Special Elite',monospace; font-size:.44em;
+  letter-spacing:.1em; color:var(--graphite-soft);
+}
+.reveal section.card .folio{color:rgba(233,225,208,.42);}
+
+.stamp{
+  display:inline-block; font-family:'Special Elite',monospace;
+  font-size:.55em; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--stamp); border:3px solid var(--stamp);
+  padding:.45em 1em .35em; border-radius:4px;
+  transform:rotate(-4.5deg); opacity:.88;
+}
+.stamp.big{font-size:.95em; border-width:5px; padding:.5em 1.2em .4em;}
+
+.note{font-size:.62em; color:var(--graphite-soft); line-height:1.5; max-width:46ch;}
+.reveal section.card .note{color:rgba(233,225,208,.55);}
+
+/* --- the certificate card (slide 1) --- */
+.cert{
+  border:5px solid var(--paper); padding:4.6rem 5.4rem 4rem;
+  max-width:30ch; background:rgba(0,0,0,.25);
+}
+.cert .kicker{
+  font-family:'Special Elite',monospace; font-size:.62em;
+  letter-spacing:.2em; text-transform:uppercase; line-height:1.7;
+  margin:0 0 1.1rem; max-width:none; color:rgba(233,225,208,.8);
+}
+.cert .rating{
+  font-size:6em; font-weight:800; letter-spacing:-.04em; line-height:.9;
+  margin:0 0 1.1rem;
+}
+.cert .body{font-size:.86em; line-height:1.45; margin:0; max-width:none;}
+
+/* --- title slide --- */
+.title h1{font-size:2.9em; max-width:22ch;}
+.title .sub{font-size:1.12em; font-weight:500; color:var(--lamp); max-width:26ch; margin-bottom:2.6rem;}
+.title .by{font-family:'Special Elite',monospace; font-size:.52em; letter-spacing:.1em; color:rgba(233,225,208,.7);}
+
+/* --- big figures --- */
+.figure{font-size:5.2em; font-weight:800; letter-spacing:-.045em; line-height:.9; color:var(--stamp);}
+.reveal section.card .figure{color:var(--lamp);}
+.figure-label{font-family:'Special Elite',monospace; font-size:.58em; letter-spacing:.06em; line-height:1.5; color:var(--graphite-soft); max-width:24ch;}
+
+/* --- evidence rows (curl, node) --- */
+.ev{border-top:1px solid var(--rule); padding:1.05rem 0; display:grid; grid-template-columns:7.5rem 1fr; gap:1.6rem; align-items:baseline;}
+.ev:last-of-type{border-bottom:1px solid var(--rule);}
+.ev dt{font-family:'Special Elite',monospace; font-size:.6em; letter-spacing:.06em; color:var(--graphite-soft); white-space:nowrap;}
+.ev dd{margin:0; font-size:.88em; line-height:1.4;}
+.ev dd b{font-weight:800;}
+
+/* --- two-column layouts --- */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:4.5rem; align-items:center; height:100%;}
+.split.art-left{grid-template-columns:1.05fr 1fr;}
+.split > div{min-width:0;}
+.stack{display:grid; grid-template-columns:repeat(3,1fr); gap:2.6rem; align-items:start;}
+.stack h3{margin-bottom:.45em;}
+.stack p{font-size:.74em; line-height:1.4; max-width:none;}
+.stack .tier{font-family:'Special Elite',monospace; font-size:.44em; letter-spacing:.12em; text-transform:uppercase; color:var(--stamp); margin-bottom:.9em; display:block;}
+
+svg.art{display:block; width:100%; height:auto; overflow:visible;}
+
+/* --- the credits roll --- */
+.creditsbox{position:absolute; inset:0; overflow:hidden;}
+.creditsbox::before,.creditsbox::after{
+  content:""; position:absolute; left:0; right:0; height:22%; z-index:2; pointer-events:none;
+}
+.creditsbox::before{top:0; background:linear-gradient(var(--screen-2),transparent);}
+.creditsbox::after{bottom:0; background:linear-gradient(transparent,var(--screen-2));}
+.roll{
+  position:absolute; top:100%; left:0; right:0;
+  text-align:center; font-size:.62em; line-height:1.85;
+  color:rgba(233,225,208,.9);
+}
+.roll .head{
+  font-family:'Special Elite',monospace; font-size:.8em; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--lamp); margin:2.6em 0 .9em;
+}
+.roll .n{display:block;}
+.roll .n span{color:rgba(233,225,208,.45); font-size:.8em;}
+.present .roll.go{animation:roll 24s linear forwards;}
+@keyframes roll{from{transform:translateY(0);} to{transform:translateY(calc(-100% - 900px));}}
+@media (prefers-reduced-motion:reduce){
+  .present .roll.go{animation:none; top:0; transform:none;}
+  .creditsbox{overflow:auto;}
+}
+
+/* --- sting --- */
+.sting{font-size:1.5em; font-weight:600; letter-spacing:-.015em; line-height:1.3; max-width:30ch;}
+
+/* --- progress / controls, kept quiet --- */
+.reveal .progress{height:2px; color:var(--lamp);}
+.reveal .controls{color:rgba(233,225,208,.35);}
+.reveal .slide-number{background:transparent; font-family:'Special Elite',monospace; font-size:14px; color:rgba(233,225,208,.35);}
+
+/* --- focus visibility --- */
+.reveal a:focus-visible,.reveal button:focus-visible{outline:3px solid var(--lamp); outline-offset:3px;}
+.reveal a{color:var(--lamp); text-decoration:none; border-bottom:1px solid rgba(224,160,58,.45);}
+.reveal section.file a{color:var(--stamp); border-bottom-color:rgba(165,49,42,.4);}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ========== 1. CERTIFICATE CARD ========== -->
+<section class="card plate" data-transition="fade">
+  <div class="cert">
+    <p class="kicker">The following presentation<br>has been rated</p>
+    <p class="rating">OSS</p>
+    <p class="body">Contains scenes of unpaid labour, sustained maintainer fatigue, and one plot twist.</p>
+  </div>
+  <aside class="notes">
+    Hold this. Let them read it. ~20s.
+    Then: "Good evening. You're in a cinema, so we're going to do this properly."
+  </aside>
+</section>
+
+<!-- ========== 2. TITLE ========== -->
+<section class="card left title">
+  <h1>Sustainability beyond funds</h1>
+  <p class="sub">Making engineering orgs resilient</p>
+  <p class="by">Josep Prat &nbsp;·&nbsp; @jlprat &nbsp;·&nbsp; @aiven_io</p>
+  <aside class="notes">
+    Who you are, one line. Don't explain the structure — the structure will explain itself.
+    ~40s. Get off this slide.
+  </aside>
+</section>
+
+<!-- ========== 3. THE STONE ========== -->
+<section class="card plate" data-transition="fade">
+  <svg class="art" viewBox="0 0 1180 620" style="max-width:none;width:112%;" role="img"
+       aria-label="A gravestone reading: Here lies Open Source Project number 5492, 2014 to 2028. More stones stand out of focus behind it.">
+    <defs>
+      <filter id="far" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="9"/>
+      </filter>
+      <filter id="mid" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="4"/>
+      </filter>
+      <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6b6055"/><stop offset="1" stop-color="#3a332c"/>
+      </linearGradient>
+      <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1d1813"/><stop offset="1" stop-color="#0d0a08"/>
+      </linearGradient>
+    </defs>
+
+    <!-- far stones, out of focus: the 5,491 -->
+    <g filter="url(#far)" opacity=".62" fill="#4a423a">
+      <path d="M60 300h72v130H60z"/><path d="M60 300a36 36 0 0 1 72 0"/>
+      <path d="M186 316h58v114h-58z"/><path d="M186 316a29 29 0 0 1 58 0"/>
+      <path d="M300 306h66v124h-66z"/><path d="M300 306a33 33 0 0 1 66 0"/>
+      <path d="M840 312h62v118h-62z"/><path d="M840 312a31 31 0 0 1 62 0"/>
+      <path d="M950 298h74v132h-74z"/><path d="M950 298a37 37 0 0 1 74 0"/>
+      <path d="M1074 320h56v110h-56z"/><path d="M1074 320a28 28 0 0 1 56 0"/>
+      <path d="M430 322h50v108h-50z"/><path d="M430 322a25 25 0 0 1 50 0"/>
+      <path d="M714 326h48v104h-48z"/><path d="M714 326a24 24 0 0 1 48 0"/>
+    </g>
+    <g filter="url(#mid)" opacity=".8" fill="#544a40">
+      <path d="M150 366h84v118h-84z"/><path d="M150 366a42 42 0 0 1 84 0"/>
+      <path d="M905 372h80v112h-80z"/><path d="M905 372a40 40 0 0 1 80 0"/>
+    </g>
+
+    <!-- the one in focus -->
+    <g>
+      <path d="M432 250h316v300H432z" fill="url(#stone)"/>
+      <path d="M432 250a158 158 0 0 1 316 0" fill="url(#stone)"/>
+      <path d="M448 266h284v268H448z" fill="none" stroke="#8a7d6d" stroke-width="2" opacity=".45"/>
+      <path d="M448 266a142 142 0 0 1 284 0" fill="none" stroke="#8a7d6d" stroke-width="2" opacity=".45"/>
+      <g fill="#cbbb9b" font-family="'Special Elite',monospace" text-anchor="middle">
+        <text x="590" y="212" font-size="24" letter-spacing="7" fill="#a89a89">HERE LIES</text>
+        <text x="590" y="316" font-size="27" letter-spacing="2">OPEN SOURCE</text>
+        <text x="590" y="352" font-size="27" letter-spacing="2">PROJECT</text>
+        <text x="590" y="438" font-size="64" fill="#e0a03a">No. 5492</text>
+        <text x="590" y="492" font-size="25" letter-spacing="4" fill="#c2b5a3">2014 — 2028</text>
+      </g>
+    </g>
+
+    <!-- ground -->
+    <rect x="0" y="524" width="1180" height="96" fill="url(#ground)"/>
+    <ellipse cx="590" cy="552" rx="250" ry="20" fill="#000" opacity=".5"/>
+  </svg>
+  <aside class="notes">
+    Say nothing for three seconds. Then, flat, no drama:
+    "Two years from now. One project. It had a number, not a name."
+    Do NOT say "open source is dead." You are not making a claim, you are showing a scene.
+  </aside>
+</section>
+
+<!-- ========== 4. THE CASE OPENS ========== -->
+<section class="file">
+  <span class="tab">Case file</span>
+  <div class="split">
+    <div>
+      <h2>Somebody has to work out what happened here.</h2>
+      <p>And to the five thousand four hundred and ninety-one before it.</p>
+    </div>
+    <div style="text-align:center">
+      <span class="stamp big">Case No. 5492</span>
+      <p class="tw" style="margin-top:2.4rem;font-size:.6em;letter-spacing:.08em;color:var(--graphite-soft)">
+        STATUS &nbsp;·&nbsp; OPEN<br>
+        FILED &nbsp;·&nbsp; TODAY
+      </p>
+    </div>
+  </div>
+  <span class="folio">5492 / 001</span>
+  <aside class="notes">
+    The number does the work. 5492 implies a registry, a registry implies 5491 before it.
+    Nobody has to believe a prediction — they only have to accept a case number.
+    "So: two suspects, one twist, and one project that got away. ~45s."
+  </aside>
+</section>
+
+<!-- ========== ACT I — THE CANVASS ========== -->
+
+<!-- 5. Crew, not cast -->
+<section class="card plate">
+  <div class="split art-left" style="width:100%">
+    <div>
+      <svg class="art" viewBox="0 0 560 400" role="img"
+           aria-label="A film set: one figure lit by a narrow beam, with three unlit crew figures, a boom microphone and a lamp stand around it.">
+        <defs>
+          <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#e0a03a" stop-opacity=".26"/>
+            <stop offset=".55" stop-color="#e0a03a" stop-opacity=".08"/>
+            <stop offset="1" stop-color="#e0a03a" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="pool" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#e0a03a" stop-opacity=".34"/>
+            <stop offset="1" stop-color="#e0a03a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- light on the subject, and the pool it throws on the floor -->
+        <ellipse cx="280" cy="250" rx="215" ry="195" fill="url(#glow)"/>
+        <ellipse cx="280" cy="336" rx="142" ry="28" fill="url(#pool)"/>
+
+        <!-- the lead: lit, centre frame -->
+        <g fill="#f2ebda">
+          <circle cx="280" cy="178" r="33"/>
+          <path d="M238 336c0-52 19-88 42-88s42 36 42 88z"/>
+        </g>
+
+        <!-- the crew: same job, no light -->
+        <g fill="#3a322a">
+          <circle cx="86" cy="206" r="28"/><path d="M50 336c0-45 16-76 36-76s36 31 36 76z"/>
+          <circle cx="476" cy="214" r="26"/><path d="M443 336c0-42 15-71 33-71s33 29 33 71z"/>
+          <circle cx="170" cy="240" r="22"/><path d="M142 336c0-36 12-60 28-60s28 24 28 60z"/>
+        </g>
+
+        <!-- boom mic, reaching into the light -->
+        <g stroke="#3a322a" fill="none" stroke-linecap="round">
+          <path d="M108 176 L246 106" stroke-width="7"/>
+          <path d="M246 106 L272 94" stroke-width="13"/>
+        </g>
+
+        <!-- lamp stand: the thing actually making the light -->
+        <g stroke="#3a322a" fill="none" stroke-width="7">
+          <path d="M512 336V176"/><path d="M486 336h52"/>
+        </g>
+        <path d="M498 144h44l12 36h-68z" fill="#3a322a"/>
+        <path d="M506 180h30l-6 10h-18z" fill="#e0a03a" fill-opacity=".55"/>
+
+        <rect x="0" y="336" width="560" height="5" fill="#241e18"/>
+      </svg>
+    </div>
+    <div style="text-align:left">
+      <h2 style="max-width:16ch">The victim was crew, not cast.</h2>
+      <p>In film, <em>below the line</em> is the part of the budget that pays the people whose names don't sell tickets. The gaffer. The grip. Whoever made the footsteps.</p>
+      <p>Project&nbsp;#5492 was below the line. The film does not exist without it.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    Define "below the line" in one sentence — a cinema audience will appreciate the precision,
+    and the ones who don't know the term get the argument for free.
+    "You can name the lead. Nobody in this room can name who made the footsteps."
+  </aside>
+</section>
+
+<!-- 6. The canvass -->
+<section class="file wide">
+  <span class="tab">Exhibit</span>
+  <div class="split art-left">
+    <div>
+      <svg class="art" viewBox="0 0 520 400" role="img"
+           aria-label="A dependency graph: one product node at the top, branching down through four levels into dozens of smaller nodes.">
+        <g stroke="#2b2622" stroke-opacity=".3" stroke-width="1.4" fill="none">
+          <!-- L0 -> L1 -->
+          <path d="M260 46 L120 122M260 46 L205 122M260 46 L300 122M260 46 L400 122"/>
+          <!-- L1 -> L2 -->
+          <path d="M120 122 L58 200M120 122 L128 200M205 122 L190 200M205 122 L252 200
+                   M300 122 L312 200M300 122 L372 200M400 122 L436 200M400 122 L482 200
+                   M120 122 L190 200M400 122 L372 200"/>
+          <!-- L2 -> L3 -->
+          <path d="M58 200 L34 276M58 200 L86 276M128 200 L116 276M128 200 L162 276
+                   M190 200 L208 276M252 200 L246 276M252 200 L292 276M312 200 L330 276
+                   M372 200 L364 276M372 200 L404 276M436 200 L444 276M482 200 L486 276
+                   M190 200 L162 276M330 276 L292 276"/>
+          <!-- L3 -> L4 -->
+          <path d="M34 276 L26 344M86 276 L74 344M116 276 L110 344M162 276 L150 344
+                   M208 276 L196 344M246 276 L240 344M292 276 L286 344M330 276 L326 344
+                   M364 276 L360 344M404 276 L400 344M444 276 L440 344M486 276 L482 344
+                   M86 276 L110 344M404 276 L440 344"/>
+        </g>
+        <!-- nodes -->
+        <circle cx="260" cy="46" r="15" fill="#a5312a"/>
+        <g fill="#2b2622">
+          <circle cx="120" cy="122" r="8"/><circle cx="205" cy="122" r="8"/>
+          <circle cx="300" cy="122" r="8"/><circle cx="400" cy="122" r="8"/>
+        </g>
+        <g fill="#4d453c">
+          <circle cx="58" cy="200" r="6"/><circle cx="128" cy="200" r="6"/>
+          <circle cx="190" cy="200" r="6"/><circle cx="252" cy="200" r="6"/>
+          <circle cx="312" cy="200" r="6"/><circle cx="372" cy="200" r="6"/>
+          <circle cx="436" cy="200" r="6"/><circle cx="482" cy="200" r="6"/>
+        </g>
+        <g fill="#6f665b">
+          <circle cx="34" cy="276" r="4.5"/><circle cx="86" cy="276" r="4.5"/>
+          <circle cx="116" cy="276" r="4.5"/><circle cx="162" cy="276" r="4.5"/>
+          <circle cx="208" cy="276" r="4.5"/><circle cx="246" cy="276" r="4.5"/>
+          <circle cx="292" cy="276" r="4.5"/><circle cx="330" cy="276" r="4.5"/>
+          <circle cx="364" cy="276" r="4.5"/><circle cx="404" cy="276" r="4.5"/>
+          <circle cx="444" cy="276" r="4.5"/><circle cx="486" cy="276" r="4.5"/>
+        </g>
+        <g fill="#8f857a">
+          <circle cx="26" cy="344" r="3.5"/><circle cx="74" cy="344" r="3.5"/>
+          <circle cx="110" cy="344" r="3.5"/><circle cx="150" cy="344" r="3.5"/>
+          <circle cx="196" cy="344" r="3.5"/><circle cx="240" cy="344" r="3.5"/>
+          <circle cx="286" cy="344" r="3.5"/><circle cx="326" cy="344" r="3.5"/>
+          <circle cx="360" cy="344" r="3.5"/><circle cx="400" cy="344" r="3.5"/>
+          <circle cx="440" cy="344" r="3.5"/><circle cx="482" cy="344" r="3.5"/>
+        </g>
+        <text x="288" y="52" font-family="'Special Elite',monospace" font-size="13" fill="#a5312a">your product</text>
+      </svg>
+      <p class="note" style="margin-top:1rem">Swap for <code>images/semantical.svg</code> from your repo if you prefer the original.</p>
+    </div>
+    <div>
+      <h2>The canvass</h2>
+      <ul>
+        <li>How many dependencies do you ship?</li>
+        <li>How many dependencies do <em>those</em> have?</li>
+        <li>How far down does this go?</li>
+      </ul>
+      <p class="note">Nobody in this room can answer the third one from memory. That is the finding.</p>
+    </div>
+  </div>
+  <span class="folio">5492 / 002</span>
+  <aside class="notes">
+    Ask the three questions out loud, slowly. Don't answer them.
+    You are not selling a methodology yet — you are establishing that the scene is enormous.
+  </aside>
+</section>
+
+<!-- 7. Candidates for 5493 -->
+<section class="file wide">
+  <span class="tab">Exhibit</span>
+  <div class="split art-left">
+    <div>
+      <svg class="art" viewBox="0 0 520 400" role="img"
+           aria-label="The same dependency graph, with four nodes deep in the graph circled in red as candidates.">
+        <g stroke="#2b2622" stroke-opacity=".18" stroke-width="1.4" fill="none">
+          <path d="M260 46 L120 122M260 46 L205 122M260 46 L300 122M260 46 L400 122"/>
+          <path d="M120 122 L58 200M120 122 L128 200M205 122 L190 200M205 122 L252 200
+                   M300 122 L312 200M300 122 L372 200M400 122 L436 200M400 122 L482 200
+                   M120 122 L190 200M400 122 L372 200"/>
+          <path d="M58 200 L34 276M58 200 L86 276M128 200 L116 276M128 200 L162 276
+                   M190 200 L208 276M252 200 L246 276M252 200 L292 276M312 200 L330 276
+                   M372 200 L364 276M372 200 L404 276M436 200 L444 276M482 200 L486 276
+                   M190 200 L162 276M330 276 L292 276"/>
+          <path d="M34 276 L26 344M86 276 L74 344M116 276 L110 344M162 276 L150 344
+                   M208 276 L196 344M246 276 L240 344M292 276 L286 344M330 276 L326 344
+                   M364 276 L360 344M404 276 L400 344M444 276 L440 344M486 276 L482 344
+                   M86 276 L110 344M404 276 L440 344"/>
+        </g>
+        <!-- live paths through the candidates -->
+        <g stroke="#a5312a" stroke-width="2.2" fill="none" stroke-opacity=".85">
+          <path d="M260 46 L120 122 L128 200 L162 276 L150 344"/>
+          <path d="M260 46 L400 122 L372 200 L404 276 L440 344"/>
+        </g>
+        <circle cx="260" cy="46" r="15" fill="#a5312a"/>
+        <g fill="#b3a99d">
+          <circle cx="205" cy="122" r="8"/><circle cx="300" cy="122" r="8"/>
+          <circle cx="58" cy="200" r="6"/><circle cx="190" cy="200" r="6"/>
+          <circle cx="252" cy="200" r="6"/><circle cx="312" cy="200" r="6"/>
+          <circle cx="436" cy="200" r="6"/><circle cx="482" cy="200" r="6"/>
+          <circle cx="34" cy="276" r="4.5"/><circle cx="86" cy="276" r="4.5"/>
+          <circle cx="116" cy="276" r="4.5"/><circle cx="208" cy="276" r="4.5"/>
+          <circle cx="246" cy="276" r="4.5"/><circle cx="292" cy="276" r="4.5"/>
+          <circle cx="330" cy="276" r="4.5"/><circle cx="364" cy="276" r="4.5"/>
+          <circle cx="444" cy="276" r="4.5"/><circle cx="486" cy="276" r="4.5"/>
+          <circle cx="26" cy="344" r="3.5"/><circle cx="74" cy="344" r="3.5"/>
+          <circle cx="110" cy="344" r="3.5"/><circle cx="196" cy="344" r="3.5"/>
+          <circle cx="240" cy="344" r="3.5"/><circle cx="286" cy="344" r="3.5"/>
+          <circle cx="326" cy="344" r="3.5"/><circle cx="360" cy="344" r="3.5"/>
+          <circle cx="400" cy="344" r="3.5"/><circle cx="482" cy="344" r="3.5"/>
+        </g>
+        <!-- candidates -->
+        <g fill="#2b2622">
+          <circle cx="120" cy="122" r="8"/><circle cx="400" cy="122" r="8"/>
+          <circle cx="128" cy="200" r="6"/><circle cx="372" cy="200" r="6"/>
+        </g>
+        <g fill="none" stroke="#a5312a" stroke-width="2.6">
+          <circle cx="162" cy="276" r="13"/><circle cx="404" cy="276" r="13"/>
+          <circle cx="150" cy="344" r="11"/><circle cx="440" cy="344" r="11"/>
+        </g>
+        <g fill="#a5312a">
+          <circle cx="162" cy="276" r="4.5"/><circle cx="404" cy="276" r="4.5"/>
+          <circle cx="150" cy="344" r="3.5"/><circle cx="440" cy="344" r="3.5"/>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <h2>Candidates for case&nbsp;#5493</h2>
+      <p>Four levels down, on the load-bearing path, maintained by nobody you could name.</p>
+      <p>Hold that thought. We come back to how you pick.</p>
+    </div>
+  </div>
+  <span class="folio">5492 / 003</span>
+  <aside class="notes">
+    Same image as the last slide, new caption. That's the whole trick — the highlight used to mean
+    "projects we support". Tonight it means "which one is next".
+    Plant it and move on. You pay it off in Act V.
+  </aside>
+</section>
+
+<!-- 8. The count -->
+<section class="file">
+  <span class="tab">Exhibit</span>
+  <div class="split">
+    <div>
+      <p class="figure" data-credits-count>—</p>
+      <p class="figure-label">packages behind the slides you are looking at right now</p>
+    </div>
+    <div>
+      <h3>No names on this slide. That is deliberate.</h3>
+      <p>Behind a lot of those is one person. With a day job. Not a team, not a studio.</p>
+      <p class="note">Generated from this deck's own lockfile at build time, so the number is true tonight.</p>
+    </div>
+  </div>
+  <span class="folio">5492 / 004</span>
+  <aside class="notes">
+    Point at the screen. The deck is the evidence. "These slides. This one. Right now."
+    Then the handoff to Act II: "So let's talk about who was left holding it."
+  </aside>
+</section>
+
+<!-- ========== ACT II — SUSPECT ONE ========== -->
+
+<!-- 9. Suspect one -->
+<section class="file">
+  <span class="tab">Suspect one</span>
+  <div class="split">
+    <div>
+      <h1>Exhaustion</h1>
+      <p>Maintainer fatigue. Bus factor of one. The goodbye post nobody in management read.</p>
+    </div>
+    <div>
+      <p class="tw" style="font-size:.58em;line-height:2;letter-spacing:.05em;color:var(--graphite-soft)">
+        MOTIVE &nbsp;·&nbsp; overwhelming<br>
+        MEANS &nbsp;·&nbsp; already present<br>
+        OPPORTUNITY &nbsp;·&nbsp; every single day<br>
+        <span style="color:var(--stamp)">ALIBI &nbsp;·&nbsp; the timeline</span>
+      </p>
+    </div>
+  </div>
+  <span class="folio">5492 / 005</span>
+  <aside class="notes">
+    Flag the alibi now — exhaustion has been around for fifteen years, so on its own it doesn't
+    explain why #5492 died in 2028 and not 2019. That tension carries you into Act III.
+  </aside>
+</section>
+
+<!-- 10. Exhibit A: libxml2 -->
+<section class="file wide">
+  <span class="tab">Exhibit A</span>
+  <h2>June 2025 — libxml2 stops accepting embargoed security reports.</h2>
+  <p>The maintainer's reasoning: doing security triage for the entire industry, unpaid, on a volunteer schedule, was no longer sustainable.</p>
+  <p>libxml2 parses XML in a very large fraction of everything. The industry's answer to "who handles the embargoes" turned out to be one person, and that person stopped.</p>
+  <span class="folio">5492 / 006</span>
+  <aside class="notes">
+    This is the strongest pre-AI exhibit because it isn't burnout in the abstract — it's a specific
+    capability the industry assumed it had, withdrawn. Nothing broke. That's the point.
+  </aside>
+</section>
+
+<!-- 11. Funding is not the alibi -->
+<section class="file">
+  <span class="tab">Ruled out</span>
+  <div class="split">
+    <div>
+      <h2>Money helps. Money is necessary. Money does not reach the bottom of the graph.</h2>
+    </div>
+    <div>
+      <ul>
+        <li>How much is enough?</li>
+        <li>Which of the four hundred do you fund?</li>
+        <li>Does it arrive where the work happens?</li>
+        <li>Is the project actually maintained afterwards?</li>
+      </ul>
+      <p class="note">Every one of these has a good answer. None of them has a <em>complete</em> answer.</p>
+    </div>
+  </div>
+  <span class="folio">5492 / 007</span>
+  <aside class="notes">
+    This is where the title earns itself. "Sustainability BEYOND funds" — say it here, explicitly,
+    once. You are not against funding. You are saying it is not sufficient, and here is why.
+    ~45s, then move.
+  </aside>
+</section>
+
+<!-- 12. Slow burn -->
+<section class="card">
+  <h2 style="max-width:26ch">Nothing explodes. The crew quietly leaves.</h2>
+  <p class="note" style="margin-top:1.4rem">Motive: established. Cause of death: not yet.</p>
+  <aside class="notes">
+    Short slide, deliberate beat. This is a slow-burn horror film, not a disaster movie —
+    which is exactly why nobody's board has a slide about it.
+  </aside>
+</section>
+
+<!-- ========== ACT III — SUSPECT TWO ========== -->
+
+<!-- 13. Suspect two -->
+<section class="file">
+  <span class="tab">Suspect two</span>
+  <div class="split">
+    <div>
+      <h1>The flood</h1>
+      <p>AI didn't join the crew. It sold ten thousand more tickets, and every one of them wants a word with the crew.</p>
+    </div>
+    <div>
+      <p class="tw" style="font-size:.58em;line-height:2;letter-spacing:.05em;color:var(--graphite-soft)">
+        MOTIVE &nbsp;·&nbsp; none, it isn't malicious<br>
+        MEANS &nbsp;·&nbsp; unlimited, free, instant<br>
+        OPPORTUNITY &nbsp;·&nbsp; your issue tracker<br>
+        <span style="color:var(--stamp)">FIRST SIGHTED &nbsp;·&nbsp; January 2024</span>
+      </p>
+    </div>
+  </div>
+  <span class="folio">5492 / 008</span>
+  <aside class="notes">
+    Be careful with tone here. The room contains people who use these tools, including you.
+    The flood has no motive. That's what makes it hard to fight.
+  </aside>
+</section>
+
+<!-- 14. Exhibit B: curl -->
+<section class="file wide">
+  <span class="tab">Exhibit B</span>
+  <h2>curl closes its bug bounty.</h2>
+  <dl style="margin:1.6rem 0 0">
+    <div class="ev"><dt>2019</dt><dd>Bounty opens on HackerOne. Over its life it pays out roughly <b>$86,000</b> across <b>78</b> confirmed vulnerabilities.</dd></div>
+    <div class="ev"><dt>mid-2025</dt><dd>Around <b>5%</b> of submissions are genuine vulnerabilities. Roughly <b>20%</b> are, in the maintainer's words, slop.</dd></div>
+    <div class="ev"><dt>Jan 2026</dt><dd>Twenty submissions in the first three weeks. Seven in one sixteen-hour window. <b>Zero</b> real vulnerabilities.</dd></div>
+    <div class="ev"><dt>31 Jan 2026</dt><dd>The bounty shuts down. curl is installed on something like <b>twenty billion</b> devices.</dd></div>
+  </dl>
+  <p class="note" style="margin-top:1.4rem">It gets better, and that matters: curl returned to HackerOne without cash rewards, and by April the valid-report rate was back above 15%. Removing the incentive worked. It also cost a year of someone's life.</p>
+  <span class="folio">5492 / 009</span>
+  <aside class="notes">
+    Your money slide. Walk the four rows, don't read them verbatim.
+    The footnote is important — include it. It makes you credible, and it is a real finding:
+    the fix was removing money, which is an odd thing to discover in a talk called
+    "sustainability beyond funds". Say that out loud, it's a good line.
+  </aside>
+</section>
+
+<!-- 15. Systemic -->
+<section class="file wide">
+  <span class="tab">Exhibit C</span>
+  <h2>This is not one grumpy maintainer.</h2>
+  <ul>
+    <li>Node.js raised its HackerOne signal requirements after thirty-plus slop reports landed over a holiday period.</li>
+    <li>Python's security developer-in-residence documented the same pattern back in 2024.</li>
+    <li>Open Collective described being flooded with the same thing.</li>
+    <li>The OpenSSF now has a working group drafting practices for maintainers on exactly this.</li>
+  </ul>
+  <p class="note">When the fix is "restrict submissions to verified researchers", the people locked out are juniors trying to break in.</p>
+  <span class="folio">5492 / 010</span>
+  <aside class="notes">
+    Breadth, fast. Four names, twenty seconds each at most.
+    The footnote is the second-order harm and worth ten seconds: the defences have costs too.
+  </aside>
+</section>
+
+<!-- 16. The asymmetry -->
+<section class="card">
+  <h2 style="max-width:30ch">Generating a plausible report costs nothing. Disproving one costs a maintainer's evening.</h2>
+  <p class="note" style="margin-top:1.2rem;max-width:40ch">Spam you delete on sight. Plausible you have to read, reproduce, and rule out — and only a human who knows the codebase can do that.</p>
+  <aside class="notes">
+    The mechanism, in one line. If they remember one sentence from Act III, it's this one.
+    Leave a pause after it.
+  </aside>
+</section>
+
+<!-- ========== ACT IV — THE TWIST ========== -->
+
+<!-- 17. Neither acted alone -->
+<section class="file">
+  <span class="tab">Findings</span>
+  <div class="split">
+    <div>
+      <h2>Neither suspect acted alone.</h2>
+    </div>
+    <div>
+      <p><strong>Exhaustion</strong> is the mechanism.</p>
+      <p><strong>The flood</strong> is the accelerant.</p>
+      <p>Neither of them is the cause. Both of them needed something else to be true first.</p>
+    </div>
+  </div>
+  <span class="folio">5492 / 011</span>
+  <aside class="notes">
+    The pivot. Slow down. You have spent fifteen minutes building two suspects and you are
+    about to acquit both of them.
+  </aside>
+</section>
+
+<!-- 18. The verdict -->
+<section class="file" data-transition="fade">
+  <span class="tab">Findings</span>
+  <div style="display:flex;flex-direction:column;justify-content:center;height:100%;align-items:flex-start">
+    <p class="tw" style="font-size:.6em;letter-spacing:.12em;color:var(--graphite-soft);margin-bottom:2.2rem">CASE No. 5492 &nbsp;·&nbsp; CAUSE OF DEATH</p>
+    <span class="stamp big" style="font-size:1.35em">Neglect by the beneficiaries</span>
+    <p style="margin-top:3rem;max-width:36ch">Nobody with a commercial dependency on #5492 was ever going to be charged with anything. That is precisely how it happened.</p>
+  </div>
+  <span class="folio">5492 / 012</span>
+  <aside class="notes">
+    You opened a mystery on slide 4. Close it here, explicitly, out loud. If you don't,
+    the whole detective frame reads as decoration.
+    Don't soften it and don't apologise for it. Then turn the light on the room.
+  </aside>
+</section>
+
+<!-- 19. We're in the file -->
+<section class="card plate">
+  <h2 style="max-width:28ch">None of the last fifteen minutes was charity.</h2>
+  <p class="sub" style="color:var(--lamp);font-size:1.1em;font-weight:500;max-width:30ch;margin-top:1rem">It was your supply chain.</p>
+  <aside class="notes">
+    The noir move: the detective works the case and finds himself in it. Chinatown, Angel Heart.
+    This is the moment the audience becomes the suspect — and the genre lets it land as a twist
+    rather than a scolding. Tone: matter-of-fact, not accusing.
+  </aside>
+</section>
+
+<!-- 20. What ignoring it buys -->
+<section class="file wide">
+  <span class="tab">Exposure</span>
+  <h2>What ignoring it buys you</h2>
+  <ul>
+    <li><strong>Slower CVE response.</strong> Your time-to-patch is bounded below by someone else's evening.</li>
+    <li><strong>Features you need that never land.</strong> No seat at the table, no say in the roadmap, no warning when the direction changes.</li>
+    <li><strong>A replacement cost that ends the business.</strong> Price out rewriting your four levels of graph in-house. Nobody survives that quote.</li>
+  </ul>
+  <p class="note">None of these appear on a risk register, because none of them have an owner.</p>
+  <span class="folio">5492 / 013</span>
+  <aside class="notes">
+    Business framing, plainly. This is the slide the executive in row four remembers.
+    The footnote is the transition into the OSPO beat: no owner is an org problem.
+  </aside>
+</section>
+
+<!-- 21. The honest beat -->
+<section class="file">
+  <span class="tab">Findings</span>
+  <div class="split">
+    <div>
+      <h2>We used to have an OSPO. We don't anymore.</h2>
+    </div>
+    <div>
+      <p>Anything that only works as a department is one reorg away from gone.</p>
+      <p>What survived the reorg was the open source work already tied to a roadmap commitment — because when it's load-bearing, cutting it is visibly expensive.</p>
+      <p class="note">That's the <em>resilient</em> in the title. Not the projects. Your org.</p>
+    </div>
+  </div>
+  <span class="folio">5492 / 014</span>
+  <aside class="notes">
+    Say this one straight. It's the most credible thing in the talk precisely because it's an
+    admission: last time you stood on a stage and sold a department, and the department is gone.
+    The lesson is structural, and it's worth more than the department was.
+  </aside>
+</section>
+
+<!-- ========== ACT V — FROM AUDIENCE TO PRODUCER ========== -->
+
+<!-- 22. Three tiers -->
+<section class="file wide">
+  <span class="tab">Options</span>
+  <h2>Three ways to be in this building</h2>
+  <div class="stack" style="margin-top:2.4rem">
+    <div>
+      <span class="tier">Buy a ticket</span>
+      <h3>Sponsor</h3>
+      <p>Money moves. Fast, easy to approve, and it buys you no influence and no information.</p>
+    </div>
+    <div>
+      <span class="tier">Be an extra</span>
+      <h3>Drive-by PRs</h3>
+      <p>Real help, badly timed. You show up when you need something and leave when you don't — which is a cost to the maintainer, not a gift.</p>
+    </div>
+    <div>
+      <span class="tier">Co-produce</span>
+      <h3>Own upstream work</h3>
+      <p>Your engineers, their timeline, in public, on the part of the graph your roadmap sits on.</p>
+    </div>
+  </div>
+  <span class="folio">5492 / 015</span>
+  <aside class="notes">
+    Be honest about tier two — drive-by contributions can be a net cost. Maintainers in the room
+    will respect you for saying it, and it makes tier three mean something.
+  </aside>
+</section>
+
+<!-- 23. Picking projects -->
+<section class="file wide">
+  <span class="tab">Method</span>
+  <h2>Which ones?</h2>
+  <div class="split" style="margin-top:1.6rem">
+    <div>
+      <h3>Semantically</h3>
+      <p>Follow the graph down to what your product actually leans on, at any depth. Slower to work out, and it finds the load-bearing nodes nobody has heard of.</p>
+    </div>
+    <div>
+      <h3>Hierarchically</h3>
+      <p>Your direct dependencies only. Cheap to enumerate, and you'll miss the thing four levels down that everything rests on.</p>
+    </div>
+  </div>
+  <p style="margin-top:2rem;max-width:44ch"><strong>The question either method is answering: what stalls your roadmap if it stalls?</strong></p>
+  <span class="folio">5492 / 016</span>
+  <aside class="notes">
+    Compressed from the 2024 version on purpose. The methods matter less than the question
+    at the bottom of the slide. If you're short on time, this is the slide to shorten.
+  </aside>
+</section>
+
+<!-- 24. The overlap rule -->
+<section class="file wide">
+  <span class="tab">Method</span>
+  <div class="split art-left">
+    <div>
+      <svg class="art" viewBox="0 0 480 300" role="img"
+           aria-label="Two overlapping circles: what you need shipped, and what the project wants. The overlap is marked.">
+        <defs><clipPath id="lensclip"><circle cx="180" cy="150" r="118"/></clipPath></defs>
+        <circle cx="180" cy="150" r="118" fill="#2b2622" fill-opacity=".08" stroke="#2b2622" stroke-opacity=".45" stroke-width="2"/>
+        <circle cx="300" cy="150" r="118" fill="#2b2622" fill-opacity=".08" stroke="#2b2622" stroke-opacity=".45" stroke-width="2"/>
+        <circle cx="300" cy="150" r="118" fill="#a5312a" fill-opacity=".92" clip-path="url(#lensclip)"/>
+        <text x="96" y="150" font-family="'Special Elite',monospace" font-size="15" fill="#2b2622" text-anchor="middle">you<tspan x="96" dy="20">need it</tspan></text>
+        <text x="384" y="150" font-family="'Special Elite',monospace" font-size="15" fill="#2b2622" text-anchor="middle">they<tspan x="384" dy="20">want it</tspan></text>
+        <text x="240" y="156" font-family="'Special Elite',monospace" font-size="15" fill="#e9e1d0" text-anchor="middle">ship</text>
+      </svg>
+    </div>
+    <div>
+      <h2>The overlap rule</h2>
+      <p>Pick the upstream work that is <em>both</em> something you need shipped <em>and</em> something the project actually wants.</p>
+      <p>That intersection is the whole strategy. Everything else is either a favour you'll stop doing or a fight you'll lose.</p>
+    </div>
+  </div>
+  <span class="folio">5492 / 017</span>
+  <aside class="notes">
+    The one genuinely actionable idea in the talk. Give it room.
+    "If it's only in the left circle, you're building a fork. Only in the right, you're doing
+    charity your CFO will cancel."
+  </aside>
+</section>
+
+<!-- 25. When the overlap fails -->
+<section class="file wide">
+  <span class="tab">Method</span>
+  <h2>When you get the overlap wrong</h2>
+  <ul>
+    <li><strong>Only you wanted it.</strong> The patch doesn't land. You carry it downstream, and now you maintain a fork you never planned for — forever, quietly, with no owner.</li>
+    <li><strong>Only they wanted it.</strong> It lands, you're thanked, and the work has no defender when budget season arrives. First thing cut.</li>
+  </ul>
+  <p style="margin-top:2rem;max-width:44ch">The difference between a proving ground and an accident is whether you decided in advance when the fork gets deleted.</p>
+  <span class="folio">5492 / 018</span>
+  <aside class="notes">
+    This sets up Inkless in two slides' time — a fork built ON PURPOSE with a deletion date.
+    Make the contrast explicit when you get there.
+  </aside>
+</section>
+
+<!-- 26. Retention -->
+<section class="file">
+  <span class="tab">Second-order</span>
+  <div class="split">
+    <div>
+      <h2>Engineers who work in public, under their own names, on things that outlive the quarter, stay longer.</h2>
+    </div>
+    <div>
+      <p>Their work has a permanent address that isn't your internal wiki. Their reputation compounds. And they can point at something in five years.</p>
+      <p class="note">This is a real return, and it is not the reason to do it. If it's the only reason you have, the work doesn't survive a bad quarter.</p>
+    </div>
+  </div>
+  <span class="folio">5492 / 019</span>
+  <aside class="notes">
+    Stated plainly, deliberately not oversold. The hedge in the footnote is the honest bit and
+    it protects you from the cynic in the room.
+  </aside>
+</section>
+
+<!-- ========== ACT VI — THE ONE THAT LIVED ========== -->
+
+<!-- 27. The pitch -->
+<section class="card plate">
+  <p class="tw" style="font-size:.5em;letter-spacing:.24em;color:var(--lamp);margin-bottom:1.6rem">THE ONE THAT GOT AWAY</p>
+  <h1 style="max-width:24ch">KIP-1150</h1>
+  <p style="max-width:34ch">Diskless topics in Apache Kafka. Also: a case file with a different ending.</p>
+  <aside class="notes">
+    Shift of energy here. Four acts of decline, now one that worked.
+    Don't oversell it as a happy ending — sell it as proof the death certificate was avoidable.
+  </aside>
+</section>
+
+<!-- 28. Screen test -->
+<section class="file wide">
+  <span class="tab">The pitch</span>
+  <h2>It started as a business need, not a good deed.</h2>
+  <ul>
+    <li>Faster cluster upgrades.</li>
+    <li>Better recovery.</li>
+    <li>Lower infrastructure cost — less load, and much less cross-zone networking.</li>
+  </ul>
+  <p style="margin-top:1.8rem;max-width:44ch">We looked for a way to tweak Kafka into using object storage natively. There wasn't one. It needed a rewrite of critical parts of the system.</p>
+  <span class="folio">5492 / 020</span>
+  <aside class="notes">
+    Left circle of the Venn. Be blunt that it was self-interested — that's the point.
+    Altruism doesn't survive budget season; a roadmap commitment does.
+  </aside>
+</section>
+
+<!-- 29. The proving ground -->
+<section class="file wide">
+  <span class="tab">The screen test</span>
+  <h2>Inkless — a fork built to be deleted.</h2>
+  <p>October 2024. A fork of Apache Kafka, opened to answer one question: is diskless actually possible?</p>
+  <p>It was explicitly temporary from day one. The stated plan was always to delete it once the feature lands upstream.</p>
+  <p class="note">Compare that to the accidental fork two slides ago. Same artefact. Completely different outcome, because the deletion date existed before the fork did.</p>
+  <span class="folio">5492 / 021</span>
+  <aside class="notes">
+    Explicit callback to slide 25. This is the payoff for the overlap rule and it's the most
+    transferable lesson in Act VI.
+  </aside>
+</section>
+
+<!-- 30. Greenlight -->
+<section class="file wide">
+  <span class="tab">Greenlight</span>
+  <h2>2 March 2026</h2>
+  <dl style="margin:1.4rem 0 0">
+    <div class="ev"><dt>Apr 2025</dt><dd>KIP-1150 published. Deliberately written as a <b>meta-KIP</b> — it asks "do we want this?" and nothing else.</dd></div>
+    <div class="ev"><dt>2025</dt><dd>The "how" splits into sub-proposals: KIP-1163 for the core produce and consume paths, KIP-1164 for coordination.</dd></div>
+    <div class="ev"><dt>2 Mar 2026</dt><dd>Accepted. <b>Nine binding votes, five non-binding.</b></dd></div>
+  </dl>
+  <p style="margin-top:1.6rem;max-width:44ch">Splitting the question was the strategic move. "Do we want to go this direction" is a conversation a community can have. "Approve my 40-page design" is not.</p>
+  <span class="folio">5492 / 022</span>
+  <aside class="notes">
+    The meta-KIP split is the reusable tactic — separate directional consensus from
+    implementation review. Most people trying to land big upstream change get this wrong.
+  </aside>
+</section>
+
+<!-- 31. Alternate ending -->
+<section class="card">
+  <h2 style="max-width:28ch">Kafka went to the cloud era through the front door.</h2>
+  <p style="max-width:34ch;margin-top:1.2rem">Not through a proprietary fork, and not through a vendor's closed rewrite. A need we had became a direction the community chose.</p>
+  <p class="note" style="margin-top:1.6rem;max-width:38ch">No sponsorship cheque buys that. That's what co-producing means, and it's the whole argument for tier three.</p>
+  <aside class="notes">
+    Land the thesis. Then straight into the credits — no summary slide before it,
+    the transition should feel like the film ending.
+  </aside>
+</section>
+
+<!-- ========== CREDITS ========== -->
+
+<!-- 32. The roll -->
+<section class="card plate" data-transition="fade" data-credits-slide>
+  <div class="creditsbox">
+    <div class="roll" data-credits-roll>
+      <p class="head">Nobody stays for the credits</p>
+    </div>
+  </div>
+  <aside class="notes">
+    Say one line as it starts: "These are the people who made the slides you have been looking at
+    for the last half hour."
+    Then stop talking. Twenty-four seconds. Let it run in silence.
+    If the organisers are signalling time, press the arrow key — the next slide works alone.
+  </aside>
+</section>
+
+<!-- 33. Takeaways -->
+<section class="file">
+  <span class="tab">Closed</span>
+  <ol style="font-size:.92em;max-width:40ch">
+    <li>Your product is a co-production. You have never read the credits.</li>
+    <li>Exhaustion was the mechanism and AI was the accelerant, but neglect was the cause.</li>
+    <li>Pick the upstream work you need <em>and</em> they want. That's the part that survives a reorg.</li>
+  </ol>
+  <p class="tw" style="position:absolute;bottom:4.5rem;left:6rem;font-size:.5em;letter-spacing:.08em;color:var(--graphite-soft)">
+    Josep Prat &nbsp;·&nbsp; @jlprat &nbsp;·&nbsp; @aiven_io<br>
+    <!-- QR: drop your images/*-qr.svg here, as in the 2024 deck -->
+  </p>
+  <span class="folio">5492 / CLOSED</span>
+  <aside class="notes">
+    Three lines, ten seconds each. Add your QR to the bottom-left block —
+    same pattern as the 2024 deck.
+  </aside>
+</section>
+
+<!-- 34. Sting -->
+<section class="card plate" data-transition="fade">
+  <p class="sting">The next case number is already on your dependency graph.</p>
+  <aside class="notes">
+    One line, black slide. Say it, don't elaborate, stop.
+    There is no Q&A — the lights come up and people stand. Let them.
+  </aside>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+<script>
+/* ============================================================
+   CREDITS — generated data.
+   Regenerate before the talk:
+     node tools/generate-credits.mjs   (writes the array below)
+   Each entry: [package, maintainer or "" if unknown]
+   ============================================================ */
+const CREDITS = [
+  ["@babel/helper-string-parser", ""],
+  ["@babel/helper-validator-identifier", ""],
+  ["@babel/parser", ""],
+  ["@babel/types", ""],
+  ["@esbuild/aix-ppc64", ""],
+  ["@esbuild/android-arm", ""],
+  ["@esbuild/android-arm64", ""],
+  ["@esbuild/android-x64", ""],
+  ["@esbuild/darwin-arm64", ""],
+  ["@esbuild/darwin-x64", ""],
+  ["@esbuild/freebsd-arm64", ""],
+  ["@esbuild/freebsd-x64", ""],
+  ["@esbuild/linux-arm", ""],
+  ["@esbuild/linux-arm64", ""],
+  ["@esbuild/linux-ia32", ""],
+  ["@esbuild/linux-loong64", ""],
+  ["@esbuild/linux-mips64el", ""],
+  ["@esbuild/linux-ppc64", ""],
+  ["@esbuild/linux-riscv64", ""],
+  ["@esbuild/linux-s390x", ""],
+  ["@esbuild/linux-x64", ""],
+  ["@esbuild/netbsd-arm64", ""],
+  ["@esbuild/netbsd-x64", ""],
+  ["@esbuild/openbsd-arm64", ""],
+  ["@esbuild/openbsd-x64", ""],
+  ["@esbuild/openharmony-arm64", ""],
+  ["@esbuild/sunos-x64", ""],
+  ["@esbuild/win32-arm64", ""],
+  ["@esbuild/win32-ia32", ""],
+  ["@esbuild/win32-x64", ""],
+  ["@jridgewell/sourcemap-codec", ""],
+  ["@microsoft/api-extractor", ""],
+  ["@microsoft/api-extractor-model", ""],
+  ["@microsoft/tsdoc", ""],
+  ["@microsoft/tsdoc-config", ""],
+  ["@oxc-project/types", ""],
+  ["@parcel/watcher", ""],
+  ["@parcel/watcher-android-arm64", ""],
+  ["@parcel/watcher-darwin-arm64", ""],
+  ["@parcel/watcher-darwin-x64", ""],
+  ["@parcel/watcher-freebsd-x64", ""],
+  ["@parcel/watcher-linux-arm-glibc", ""],
+  ["@parcel/watcher-linux-arm-musl", ""],
+  ["@parcel/watcher-linux-arm64-glibc", ""],
+  ["@parcel/watcher-linux-arm64-musl", ""],
+  ["@parcel/watcher-linux-x64-glibc", ""],
+  ["@parcel/watcher-linux-x64-musl", ""],
+  ["@parcel/watcher-win32-arm64", ""],
+  ["@parcel/watcher-win32-ia32", ""],
+  ["@parcel/watcher-win32-x64", ""],
+  ["@puppeteer/browsers", ""],
+  ["@rolldown/binding-android-arm-eabi", ""],
+  ["@rolldown/binding-android-arm64", ""],
+  ["@rolldown/binding-darwin-arm64", ""],
+  ["@rolldown/binding-darwin-x64", ""],
+  ["@rolldown/binding-freebsd-x64", ""],
+  ["@rolldown/binding-linux-arm-gnueabihf", ""],
+  ["@rolldown/binding-linux-arm64-gnu", ""],
+  ["@rolldown/binding-linux-arm64-musl", ""],
+  ["@rolldown/binding-linux-ppc64-gnu", ""],
+  ["@rolldown/binding-linux-s390x-gnu", ""],
+  ["@rolldown/binding-linux-x64-gnu", ""],
+  ["@rolldown/binding-linux-x64-musl", ""],
+  ["@rolldown/binding-openharmony-arm64", ""],
+  ["@rolldown/binding-win32-arm64-msvc", ""],
+  ["@rolldown/binding-win32-x64-msvc", ""],
+  ["@rolldown/pluginutils", ""],
+  ["@rollup/pluginutils", ""],
+  ["@rushstack/node-core-library", ""],
+  ["@rushstack/problem-matcher", ""],
+  ["@rushstack/rig-package", ""],
+  ["@rushstack/terminal", ""],
+  ["@rushstack/ts-command-line", ""],
+  ["@types/argparse", ""],
+  ["@types/estree", ""],
+  ["@types/node", ""],
+  ["@vitejs/devtools", ""],
+  ["@volar/language-core", ""],
+  ["@volar/source-map", ""],
+  ["@volar/typescript", ""],
+  ["@vue/compiler-core", ""],
+  ["@vue/compiler-dom", ""],
+  ["@vue/compiler-vue2", ""],
+  ["@vue/language-core", ""],
+  ["@vue/shared", ""],
+  ["acorn", ""],
+  ["ajv", ""],
+  ["ajv-draft-04", ""],
+  ["ajv-formats", ""],
+  ["alien-signals", ""],
+  ["ansi-regex", ""],
+  ["ansi-styles", ""],
+  ["argparse", ""],
+  ["balanced-match", ""],
+  ["brace-expansion", ""],
+  ["braces", ""],
+  ["bufferutil", ""],
+  ["chokidar", ""],
+  ["chromium-bidi", ""],
+  ["cliui", ""],
+  ["colors", ""],
+  ["commander", ""],
+  ["compare-versions", ""],
+  ["confbox", ""],
+  ["core-util-is", ""],
+  ["de-indent", ""],
+  ["debug", ""],
+  ["detect-libc", ""],
+  ["devtools-protocol", ""],
+  ["diff", ""],
+  ["emoji-regex", ""],
+  ["entities", ""],
+  ["esbuild", ""],
+  ["escalade", ""],
+  ["estree-walker", ""],
+  ["exsolve", ""],
+  ["fast-deep-equal", ""],
+  ["fast-uri", ""],
+  ["fdir", ""],
+  ["fill-range", ""],
+  ["fitty", ""],
+  ["fs-extra", ""],
+  ["fsevents", ""],
+  ["function-bind", ""],
+  ["get-caller-file", ""],
+  ["get-east-asian-width", ""],
+  ["glob", ""],
+  ["globalyzer", ""],
+  ["globrex", ""],
+  ["graceful-fs", ""],
+  ["has-flag", ""],
+  ["hasown", ""],
+  ["he", ""],
+  ["highlight.js", ""],
+  ["immediate", ""],
+  ["immutable", ""],
+  ["import-lazy", ""],
+  ["inherits", ""],
+  ["is-core-module", ""],
+  ["is-extglob", ""],
+  ["is-glob", ""],
+  ["is-number", ""],
+  ["isarray", ""],
+  ["jiti", ""],
+  ["jju", ""],
+  ["json-schema-traverse", ""],
+  ["jsonfile", ""],
+  ["jszip", ""],
+  ["kolorist", ""],
+  ["less", ""],
+  ["lie", ""],
+  ["lightningcss", ""],
+  ["lightningcss-android-arm64", ""],
+  ["lightningcss-darwin-arm64", ""],
+  ["lightningcss-darwin-x64", ""],
+  ["lightningcss-freebsd-x64", ""],
+  ["lightningcss-linux-arm-gnueabihf", ""],
+  ["lightningcss-linux-arm64-gnu", ""],
+  ["lightningcss-linux-arm64-musl", ""],
+  ["lightningcss-linux-x64-gnu", ""],
+  ["lightningcss-linux-x64-musl", ""],
+  ["lightningcss-win32-arm64-msvc", ""],
+  ["lightningcss-win32-x64-msvc", ""],
+  ["lilconfig", ""],
+  ["local-pkg", ""],
+  ["lodash", ""],
+  ["lru-cache", ""],
+  ["magic-string", ""],
+  ["marked", ""],
+  ["marked-smartypants", ""],
+  ["micromatch", ""],
+  ["minimatch", ""],
+  ["minipass", ""],
+  ["mitt", ""],
+  ["mlly", ""],
+  ["modern-tar", ""],
+  ["ms", ""],
+  ["muggle-string", ""],
+  ["nanoid", ""],
+  ["node-addon-api", ""],
+  ["node-qunit-puppeteer", ""],
+  ["node-watch", ""],
+  ["pako", ""],
+  ["path-browserify", ""],
+  ["path-parse", ""],
+  ["path-scurry", ""],
+  ["pathe", ""],
+  ["picocolors", ""],
+  ["picomatch", ""],
+  ["pkg-types", ""],
+  ["postcss", ""],
+  ["process-nextick-args", ""],
+  ["proxy-agent", ""],
+  ["puppeteer", ""],
+  ["puppeteer-core", ""],
+  ["quansync", ""],
+  ["qunit", ""],
+  ["readable-stream", ""],
+  ["readdirp", ""],
+  ["require-from-string", ""],
+  ["resolve", ""],
+  ["rolldown", ""],
+  ["rollup", ""],
+  ["safe-buffer", ""],
+  ["sass", ""],
+  ["sass-embedded", ""],
+  ["semver", ""],
+  ["setimmediate", ""],
+  ["smartypants", ""],
+  ["source-map", ""],
+  ["source-map-js", ""],
+  ["sprintf-js", ""],
+  ["string_decoder", ""],
+  ["string-argv", ""],
+  ["string-width", ""],
+  ["strip-ansi", ""],
+  ["strip-json-comments", ""],
+  ["stylus", ""],
+  ["sugarss", ""],
+  ["supports-color", ""],
+  ["supports-preserve-symlinks-flag", ""],
+  ["terser", ""],
+  ["tiny-glob", ""],
+  ["tinyglobby", ""],
+  ["to-regex-range", ""],
+  ["tsx", ""],
+  ["typed-query-selector", ""],
+  ["typescript", ""],
+  ["ufo", ""],
+  ["universalify", ""],
+  ["utf-8-validate", ""],
+  ["util-deprecate", ""],
+  ["vite", ""],
+  ["vite-plugin-dts", ""],
+  ["vscode-uri", ""],
+  ["webdriver-bidi-protocol", ""],
+  ["wrap-ansi", ""],
+  ["ws", ""],
+  ["y18n", ""],
+  ["yallist", ""],
+  ["yaml", ""],
+  ["yargs", ""],
+  ["yargs-parser", ""],
+  ["yauzl", ""],
+  ["zod", ""],
+];
+
+/* Attribution for any third-party media added later.
+   All artwork in this deck is original SVG, so this is empty today. */
+const MEDIA_CREDITS = [];
+
+Reveal.initialize({
+  width: 1600,
+  height: 900,
+  margin: 0,
+  minScale: 0.2,
+  maxScale: 2.0,
+  center: false,
+  controls: false,
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'slide',
+  transitionSpeed: 'slow',
+  backgroundTransition: 'fade',
+  plugins: [RevealNotes]
+});
+
+/* --- dependency count on slide 8 --- */
+document.querySelectorAll('[data-credits-count]').forEach(el => {
+  el.textContent = CREDITS.length > 1 ? CREDITS.length : 'N';
+});
+
+/* --- build the roll --- */
+const roll = document.querySelector('[data-credits-roll]');
+if (roll) {
+  const frag = document.createDocumentFragment();
+  CREDITS.forEach(([pkg, who]) => {
+    const p = document.createElement('p');
+    p.className = 'n';
+    p.innerHTML = who
+      ? `${pkg}<span> — ${who}</span>`
+      : `${pkg}<span> — maintainer unlisted</span>`;
+    frag.appendChild(p);
+  });
+  if (MEDIA_CREDITS.length) {
+    const h = document.createElement('p');
+    h.className = 'head';
+    h.textContent = 'Images';
+    frag.appendChild(h);
+    MEDIA_CREDITS.forEach(line => {
+      const p = document.createElement('p');
+      p.className = 'n';
+      p.textContent = line;
+      frag.appendChild(p);
+    });
+  }
+  if (CREDITS.length <= 1) {
+    const warn = document.createElement('p');
+    warn.className = 'head';
+    warn.style.color = '#a5312a';
+    warn.textContent = 'Run generate-credits.mjs to fill this roll';
+    frag.appendChild(warn);
+  }
+  const end = document.createElement('p');
+  end.className = 'head';
+  end.textContent = 'Most of these are one person';
+  frag.appendChild(end);
+  roll.appendChild(frag);
+}
+
+/* start the roll only when its slide is shown, and restart on revisit */
+function armRoll(ev) {
+  const slide = document.querySelector('[data-credits-slide]');
+  if (!slide || !roll) return;
+  if (ev.currentSlide === slide) {
+    roll.classList.remove('go');
+    void roll.offsetWidth;   /* force reflow so the animation restarts */
+    roll.classList.add('go');
+  } else {
+    roll.classList.remove('go');
+  }
+}
+Reveal.on('slidechanged', armRoll);
+Reveal.on('ready', armRoll);
+</script>
+</body>
+</html>
