@@ -37,7 +37,7 @@
 .reveal-viewport{background:#080706;}
 .reveal{
   font-family:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
-  font-size:30px; font-weight:400; color:var(--graphite);
+  font-size:34px; font-weight:400; color:var(--graphite);
   -webkit-font-smoothing:antialiased;
 }
 .reveal ::selection{background:var(--lamp);color:var(--screen);}
@@ -50,7 +50,7 @@
 .reveal .slides>section.file,
 .reveal .slides>section.file.present{
   background:var(--paper); color:var(--graphite);
-  padding:5.5rem 6rem 4.5rem;
+  padding:4.25rem 6rem 3.5rem;
   display:flex !important; flex-direction:column; justify-content:center;
   background-image:
     radial-gradient(120% 90% at 50% -20%, rgba(255,255,255,.55), transparent 60%),
@@ -59,7 +59,7 @@
 .reveal .slides>section.card,
 .reveal .slides>section.card.present{
   background:var(--screen); color:var(--paper);
-  padding:5.5rem 6rem;
+  padding:4.5rem 6rem;
   display:flex !important; flex-direction:column; justify-content:center; align-items:center;
   text-align:center;
   background-image:radial-gradient(75% 65% at 50% 45%, rgba(224,160,58,.10), transparent 70%);
@@ -82,12 +82,12 @@
   text-transform:none; letter-spacing:-.022em; line-height:1.02;
   margin:0 0 .55em; color:inherit;
 }
-.reveal h1{font-size:2.55em;}
-.reveal h2{font-size:1.78em;}
-.reveal h3{font-size:1.16em; font-weight:600; letter-spacing:-.012em;}
-.reveal p{line-height:1.42; margin:0 0 .8em; max-width:30ch;}
-.reveal section.file p,.reveal section.file li{max-width:34ch;}
-.reveal .wide p,.reveal .wide li{max-width:44ch;}
+.reveal h1{font-size:2.25em;}
+.reveal h2{font-size:1.58em;}
+.reveal h3{font-size:1.03em; font-weight:600; letter-spacing:-.012em;}
+.reveal p{line-height:1.42; margin:0 0 .8em; max-width:32ch;}
+.reveal section.file p,.reveal section.file li{max-width:38ch;}
+.reveal .wide p,.reveal .wide li{max-width:50ch;}
 .reveal strong{font-weight:800;}
 .reveal em{font-style:normal; color:var(--stamp);}
 .reveal section.card em{color:var(--lamp);}
@@ -106,32 +106,33 @@
 
 .tab{ /* folder tab, top-left of every file slide */
   position:absolute; top:0; left:6rem;
-  font-family:'Special Elite',monospace; font-size:.5em;
+  font-family:'Special Elite',monospace; font-size:.63em;
   letter-spacing:.14em; text-transform:uppercase;
   color:var(--graphite); background:var(--manila);
   padding:.7em 1.5em .55em; border-radius:0 0 3px 3px;
 }
 .folio{ /* bottom-right case reference */
   position:absolute; bottom:2.4rem; right:6rem;
-  font-family:'Special Elite',monospace; font-size:.44em;
+  font-family:'Special Elite',monospace; font-size:.57em;
   letter-spacing:.1em; color:var(--graphite-soft);
 }
 .reveal section.card .folio{color:rgba(233,225,208,.42);}
 
 .stamp{
   display:inline-block; font-family:'Special Elite',monospace;
-  font-size:.55em; letter-spacing:.1em; text-transform:uppercase;
+  font-size:.66em; letter-spacing:.1em; text-transform:uppercase;
   color:var(--stamp); border:3px solid var(--stamp);
   padding:.45em 1em .35em; border-radius:4px;
   transform:rotate(-4.5deg); opacity:.88;
 }
-.stamp.big{font-size:.95em; border-width:5px; padding:.5em 1.2em .4em;}
+.stamp.big{font-size:.90em; border-width:5px; padding:.5em 1.2em .4em;}
 
-.note{font-size:.62em; color:var(--graphite-soft); line-height:1.5; max-width:46ch;}
+.note{font-size:.75em; color:var(--graphite-soft); line-height:1.5; max-width:62ch;}
 .reveal section.card .note{color:rgba(233,225,208,.55);}
 
 /* the folder has been on somebody's desk a while.
-   Only on the single-column .file slides — the two-column ones have no room.
+   Single-column .file slides only, and not all of them — the two-column ones have
+   no room, and the curl slide is too dense to carry one.
    Each placement bleeds off an edge so it reads as a spill, not a badge.
    Gradients alone read as a drawn circle, so the shape is warped and mottled by the
    turbulence filters in #stain-defs at the top of the body. */
@@ -179,31 +180,51 @@
   max-width:30ch; background:rgba(0,0,0,.25);
 }
 .cert .kicker{
-  font-family:'Special Elite',monospace; font-size:.62em;
+  font-family:'Special Elite',monospace; font-size:.72em;
   letter-spacing:.2em; text-transform:uppercase; line-height:1.7;
   margin:0 0 1.1rem; max-width:none; color:rgba(233,225,208,.8);
 }
 .cert .rating{
-  font-size:6em; font-weight:800; letter-spacing:-.04em; line-height:.9;
+  font-size:5.3em; font-weight:800; letter-spacing:-.04em; line-height:.9;
   margin:0 0 1.1rem;
 }
-.cert .body{font-size:.86em; line-height:1.45; margin:0; max-width:none;}
+.cert .body{font-size:.90em; line-height:1.45; margin:0; max-width:none;}
+
+/* --- the production card (slide 2) --- */
+.producer .kicker{
+  font-family:'Special Elite',monospace; font-size:.72em;
+  letter-spacing:.24em; text-transform:uppercase;
+  margin:0 0 2.4rem; max-width:none; color:rgba(233,225,208,.6);
+}
+.producer .wordmark{
+  font-size:3.2em; font-weight:800; letter-spacing:-.025em; line-height:1;
+  margin:0; max-width:none; color:var(--paper);
+}
+/* the official SVG, once dropped in, sizes off the wordmark's own line box */
+.producer .wordmark img,.producer .wordmark svg{
+  display:block; height:1em; width:auto; margin:0 auto;
+}
+.producer .sub{
+  font-family:'Special Elite',monospace; font-size:.64em;
+  letter-spacing:.16em; text-transform:uppercase;
+  margin:2.6rem 0 0; max-width:none; color:rgba(233,225,208,.42);
+}
 
 /* --- title slide --- */
-.title h1{font-size:2.9em; max-width:22ch;}
-.title .sub{font-size:1.12em; font-weight:500; color:var(--lamp); max-width:26ch; margin-bottom:2.6rem;}
-.title .by{font-family:'Special Elite',monospace; font-size:.52em; letter-spacing:.1em; color:rgba(233,225,208,.7);}
+.title h1{font-size:2.55em; max-width:22ch;}
+.title .sub{font-size:1.06em; font-weight:500; color:var(--lamp); max-width:26ch; margin-bottom:2.6rem;}
+.title .by{font-family:'Special Elite',monospace; font-size:.66em; letter-spacing:.1em; color:rgba(233,225,208,.7);}
 
 /* --- big figures --- */
-.figure{font-size:5.2em; font-weight:800; letter-spacing:-.045em; line-height:.9; color:var(--stamp);}
+.figure{font-size:4.6em; font-weight:800; letter-spacing:-.045em; line-height:.9; color:var(--stamp);}
 .reveal section.card .figure{color:var(--lamp);}
-.figure-label{font-family:'Special Elite',monospace; font-size:.58em; letter-spacing:.06em; line-height:1.5; color:var(--graphite-soft); max-width:24ch;}
+.figure-label{font-family:'Special Elite',monospace; font-size:.70em; letter-spacing:.06em; line-height:1.5; color:var(--graphite-soft); max-width:24ch;}
 
 /* --- evidence rows (curl, node) --- */
-.ev{border-top:1px solid var(--rule); padding:1.05rem 0; display:grid; grid-template-columns:7.5rem 1fr; gap:1.6rem; align-items:baseline;}
+.ev{border-top:1px solid var(--rule); padding:.9rem 0; display:grid; grid-template-columns:7.5rem 1fr; gap:1.6rem; align-items:baseline;}
 .ev:last-of-type{border-bottom:1px solid var(--rule);}
-.ev dt{font-family:'Special Elite',monospace; font-size:.6em; letter-spacing:.06em; color:var(--graphite-soft); white-space:nowrap;}
-.ev dd{margin:0; font-size:.88em; line-height:1.4;}
+.ev dt{font-family:'Special Elite',monospace; font-size:.72em; letter-spacing:.06em; color:var(--graphite-soft); white-space:nowrap;}
+.ev dd{margin:0; font-size:.92em; line-height:1.4;}
 .ev dd b{font-weight:800;}
 
 /* --- two-column layouts --- */
@@ -212,8 +233,8 @@
 .split > div{min-width:0;}
 .stack{display:grid; grid-template-columns:repeat(3,1fr); gap:2.6rem; align-items:start;}
 .stack h3{margin-bottom:.45em;}
-.stack p{font-size:.74em; line-height:1.4; max-width:none;}
-.stack .tier{font-family:'Special Elite',monospace; font-size:.44em; letter-spacing:.12em; text-transform:uppercase; color:var(--stamp); margin-bottom:.9em; display:block;}
+.stack p{font-size:.82em; line-height:1.4; max-width:none;}
+.stack .tier{font-family:'Special Elite',monospace; font-size:.57em; letter-spacing:.12em; text-transform:uppercase; color:var(--stamp); margin-bottom:.9em; display:block;}
 
 svg.art{display:block; width:100%; height:auto; overflow:visible;}
 
@@ -228,7 +249,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
    component whose :hover rules flip the inner <span> out of view. */
 .creditroll{
   position:absolute; top:100%; left:0; right:0;
-  text-align:center; font-size:.62em; line-height:1.85;
+  text-align:center; font-size:.75em; line-height:1.85;
   color:rgba(233,225,208,.9);
 }
 .creditroll .head{
@@ -237,7 +258,9 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 }
 .creditroll p{max-width:none; margin-left:auto; margin-right:auto;}
 .creditroll .n{display:block;}
-.creditroll .n span{color:rgba(233,225,208,.45); font-size:.8em;}
+/* the maintainer name is the point of this slide — keep it clearly readable while
+   it scrolls, and still a step below the package name's .9 */
+.creditroll .n span{color:rgba(233,225,208,.72); font-size:.8em;}
 .present .creditroll.go{animation:creditroll 25s linear forwards;}
 @keyframes creditroll{from{transform:translateY(0);} to{transform:translateY(calc(-100% - 900px));}}
 @media (prefers-reduced-motion:reduce){
@@ -246,12 +269,12 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 }
 
 /* --- sting --- */
-.sting{font-size:1.5em; font-weight:600; letter-spacing:-.015em; line-height:1.3; max-width:30ch;}
+.sting{font-size:1.32em; font-weight:600; letter-spacing:-.015em; line-height:1.3; max-width:30ch;}
 
 /* --- progress / controls, kept quiet --- */
 .reveal .progress{height:2px; color:var(--lamp);}
 .reveal .controls{color:rgba(233,225,208,.35);}
-.reveal .slide-number{background:transparent; font-family:'Special Elite',monospace; font-size:14px; color:rgba(233,225,208,.35);}
+.reveal .slide-number{background:transparent; font-family:'Special Elite',monospace; font-size:18px; color:rgba(233,225,208,.35);}
 
 /* --- focus visibility --- */
 .reveal a:focus-visible,.reveal button:focus-visible{outline:3px solid var(--lamp); outline-offset:3px;}
@@ -317,18 +340,33 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- ========== 2. TITLE ========== -->
+<!-- ========== 2. PRODUCTION CARD ========== -->
+<section class="card plate" data-transition="fade">
+  <div class="producer">
+    <p class="kicker">Produced by</p>
+    <!-- the alt text falls back to the typeset wordmark if the file goes missing -->
+    <p class="wordmark"><img src="logo-aiven-white.svg" alt="Aiven"></p>
+    <p class="sub">In association with everyone in the credits</p>
+  </div>
+  <aside class="notes">
+    Five seconds, no more. Say who you work for once, here, so you never have to
+    say it again — and so the Inkless story in Act VI doesn't land as a sales pitch.
+    "In association with everyone in the credits" is the whole talk in one line; don't explain it yet.
+  </aside>
+</section>
+
+<!-- ========== 3. TITLE ========== -->
 <section class="card left title">
   <h1>Sustainability beyond funds</h1>
   <p class="sub">Making engineering orgs resilient</p>
-  <p class="by">Josep Prat &nbsp;·&nbsp; @jlprat &nbsp;·&nbsp; @aiven_io</p>
+  <p class="by">Josep&nbsp;Prat&nbsp;·&nbsp;@jlprat&nbsp;·&nbsp;@aiven_io</p>
   <aside class="notes">
     Who you are, one line. Don't explain the structure — the structure will explain itself.
     ~40s. Get off this slide.
   </aside>
 </section>
 
-<!-- ========== 3. THE STONE ========== -->
+<!-- ========== 4. THE STONE ========== -->
 <section class="card plate" data-transition="fade">
   <svg class="art" viewBox="0 0 1180 620" style="max-width:none;width:112%;" role="img"
        aria-label="A gravestone reading: Here lies Open Source Project number 5492, 2014 to 2028. More stones stand out of focus behind it.">
@@ -389,7 +427,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- ========== 4. THE CASE OPENS ========== -->
+<!-- ========== 5. THE CASE OPENS ========== -->
 <section class="file">
   <span class="tab">Case file</span>
   <div class="split">
@@ -399,7 +437,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
     </div>
     <div style="text-align:center">
       <span class="stamp big">Case No. 5492</span>
-      <p class="tw" style="margin-top:2.4rem;font-size:.6em;letter-spacing:.08em;color:var(--graphite-soft)">
+      <p class="tw" style="margin-top:2.4rem;font-size:.72em;letter-spacing:.08em;color:var(--graphite-soft)">
         STATUS &nbsp;·&nbsp; OPEN<br>
         FILED &nbsp;·&nbsp; TODAY
       </p>
@@ -415,7 +453,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 
 <!-- ========== ACT I — THE CANVASS ========== -->
 
-<!-- 5. Crew, not cast -->
+<!-- 6. Crew, not cast -->
 <section class="card plate">
   <div class="split art-left" style="width:100%">
     <div>
@@ -479,7 +517,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 6. The canvass -->
+<!-- 7. The canvass -->
 <section class="file wide">
   <span class="tab">Exhibit</span>
   <div class="split art-left">
@@ -552,7 +590,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 7. Candidates for 5493 -->
+<!-- 8. Candidates for 5493 -->
 <section class="file wide">
   <span class="tab">Exhibit</span>
   <div class="split art-left">
@@ -624,7 +662,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 8. The count -->
+<!-- 9. The count -->
 <section class="file">
   <span class="tab">Exhibit</span>
   <div class="split">
@@ -647,7 +685,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 
 <!-- ========== ACT II — SUSPECT ONE ========== -->
 
-<!-- 9. Suspect one -->
+<!-- 10. Suspect one -->
 <section class="file">
   <span class="tab">Suspect one</span>
   <div class="split">
@@ -656,7 +694,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
       <p>Maintainer fatigue. Bus factor of one. The goodbye post nobody in management read.</p>
     </div>
     <div>
-      <p class="tw" style="font-size:.58em;line-height:2;letter-spacing:.05em;color:var(--graphite-soft)">
+      <p class="tw" style="font-size:.70em;line-height:2;letter-spacing:.05em;color:var(--graphite-soft)">
         MOTIVE &nbsp;·&nbsp; overwhelming<br>
         MEANS &nbsp;·&nbsp; already present<br>
         OPPORTUNITY &nbsp;·&nbsp; every single day<br>
@@ -671,7 +709,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 10. Exhibit A: libxml2 -->
+<!-- 11. Exhibit A: libxml2 -->
 <section class="file wide">
   <span class="tab">Exhibit A</span>
   <span class="stain p1"></span>
@@ -685,7 +723,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 11. Funding is not the alibi -->
+<!-- 12. Funding is not the alibi -->
 <section class="file">
   <span class="tab">Ruled out</span>
   <div class="split">
@@ -710,7 +748,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 12. Slow burn -->
+<!-- 13. Slow burn -->
 <section class="card">
   <h2 style="max-width:26ch">Nothing explodes. The crew quietly leaves.</h2>
   <p class="note" style="margin-top:1.4rem">Motive: established. Cause of death: not yet.</p>
@@ -722,7 +760,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 
 <!-- ========== ACT III — SUSPECT TWO ========== -->
 
-<!-- 13. Suspect two -->
+<!-- 14. Suspect two -->
 <section class="file">
   <span class="tab">Suspect two</span>
   <div class="split">
@@ -731,7 +769,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
       <p>AI didn't join the crew. It sold ten thousand more tickets, and every one of them wants a word with the crew.</p>
     </div>
     <div>
-      <p class="tw" style="font-size:.58em;line-height:2;letter-spacing:.05em;color:var(--graphite-soft)">
+      <p class="tw" style="font-size:.70em;line-height:2;letter-spacing:.05em;color:var(--graphite-soft)">
         MOTIVE &nbsp;·&nbsp; none, it isn't malicious<br>
         MEANS &nbsp;·&nbsp; unlimited, free, instant<br>
         OPPORTUNITY &nbsp;·&nbsp; your issue tracker<br>
@@ -746,18 +784,19 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 14. Exhibit B: curl -->
+<!-- 15. Exhibit B: curl -->
 <section class="file wide">
   <span class="tab">Exhibit B</span>
-  <span class="stain sm p2"></span>
   <h2>curl closes its bug bounty.</h2>
   <dl style="margin:1.6rem 0 0">
-    <div class="ev"><dt>2019</dt><dd>Bounty opens on HackerOne. Over its life it pays out roughly <b>$86,000</b> across <b>78</b> confirmed vulnerabilities.</dd></div>
-    <div class="ev"><dt>mid-2025</dt><dd>Around <b>5%</b> of submissions are genuine vulnerabilities. Roughly <b>20%</b> are, in the maintainer's words, slop.</dd></div>
-    <div class="ev"><dt>Jan 2026</dt><dd>Twenty submissions in the first three weeks. Seven in one sixteen-hour window. <b>Zero</b> real vulnerabilities.</dd></div>
-    <div class="ev"><dt>31 Jan 2026</dt><dd>The bounty shuts down. curl is installed on something like <b>twenty billion</b> devices.</dd></div>
+    <div class="ev"><dt>'19</dt><dd>Bounty opens on HackerOne. Over its life it pays out roughly <b>$86,000</b> across <b>78</b> confirmed vulnerabilities.</dd></div>
+    <div class="ev"><dt>mid-'25</dt><dd>Around <b>5%</b> of submissions are genuine vulnerabilities. Roughly <b>20%</b> are, in the maintainer's words, slop.</dd></div>
+    <div class="ev"><dt>Jan '26</dt><dd>Twenty submissions in the first three weeks. Seven in one sixteen-hour window. <b>Zero</b> real vulnerabilities.</dd></div>
+    <div class="ev"><dt>31 Jan '26</dt><dd>The bounty shuts down. curl is installed on something like <b>twenty billion</b> devices.</dd></div>
   </dl>
-  <p class="note" style="margin-top:1.4rem">It gets better, and that matters: curl returned to HackerOne without cash rewards, and by April the valid-report rate was back above 15%. Removing the incentive worked. It also cost a year of someone's life.</p>
+  <!-- runs the full content width: this is the densest slide in the deck and the
+       extra line-length buys back the vertical room the four rows need -->
+  <p class="note" style="margin-top:1.4rem;max-width:none">It gets better, and that matters: curl returned to HackerOne without cash rewards, and by April the valid-report rate was back above 15%. Removing the incentive worked. It also cost a year of someone's life.</p>
   <span class="folio">5492 / 009</span>
   <aside class="notes">
     Your money slide. Walk the four rows, don't read them verbatim.
@@ -767,7 +806,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 15. Systemic -->
+<!-- 16. Systemic -->
 <section class="file wide">
   <span class="tab">Exhibit C</span>
   <span class="stain p3"></span>
@@ -786,7 +825,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 16. The asymmetry -->
+<!-- 17. The asymmetry -->
 <section class="card">
   <h2 style="max-width:30ch">Generating a plausible report costs nothing. Disproving one costs a maintainer's evening.</h2>
   <p class="note" style="margin-top:1.2rem;max-width:40ch">Spam you delete on sight. Plausible you have to read, reproduce, and rule out — and only a human who knows the codebase can do that.</p>
@@ -798,7 +837,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 
 <!-- ========== ACT IV — THE TWIST ========== -->
 
-<!-- 17. Neither acted alone -->
+<!-- 18. Neither acted alone -->
 <section class="file">
   <span class="tab">Findings</span>
   <div class="split">
@@ -818,27 +857,27 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 18. The verdict -->
+<!-- 19. The verdict -->
 <section class="file" data-transition="fade">
   <span class="tab">Findings</span>
   <span class="stain lg p4"></span>
   <div style="display:flex;flex-direction:column;justify-content:center;height:100%;align-items:flex-start">
-    <p class="tw" style="font-size:.6em;letter-spacing:.12em;color:var(--graphite-soft);margin-bottom:2.2rem">CASE No. 5492 &nbsp;·&nbsp; CAUSE OF DEATH</p>
+    <p class="tw" style="font-size:.72em;letter-spacing:.12em;color:var(--graphite-soft);margin-bottom:2.2rem">CASE No. 5492 &nbsp;·&nbsp; CAUSE OF DEATH</p>
     <span class="stamp big" style="font-size:1.35em">Neglect by the beneficiaries</span>
     <p style="margin-top:3rem;max-width:36ch">Nobody with a commercial dependency on #5492 was ever going to be charged with anything. That is precisely how it happened.</p>
   </div>
   <span class="folio">5492 / 012</span>
   <aside class="notes">
-    You opened a mystery on slide 4. Close it here, explicitly, out loud. If you don't,
+    You opened a mystery on slide 5. Close it here, explicitly, out loud. If you don't,
     the whole detective frame reads as decoration.
     Don't soften it and don't apologise for it. Then turn the light on the room.
   </aside>
 </section>
 
-<!-- 19. We're in the file -->
+<!-- 20. We're in the file -->
 <section class="card plate">
   <h2 style="max-width:28ch">None of the last fifteen minutes was charity.</h2>
-  <p class="sub" style="color:var(--lamp);font-size:1.1em;font-weight:500;max-width:30ch;margin-top:1rem">It was your supply chain.</p>
+  <p class="sub" style="color:var(--lamp);font-size:1.04em;font-weight:500;max-width:30ch;margin-top:1rem">It was your supply chain.</p>
   <aside class="notes">
     The noir move: the detective works the case and finds himself in it. Chinatown, Angel Heart.
     This is the moment the audience becomes the suspect — and the genre lets it land as a twist
@@ -846,7 +885,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 20. What ignoring it buys -->
+<!-- 21. What ignoring it buys -->
 <section class="file wide">
   <span class="tab">Exposure</span>
   <span class="stain p2"></span>
@@ -864,7 +903,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 21. The honest beat -->
+<!-- 22. The honest beat -->
 <section class="file">
   <span class="tab">Findings</span>
   <div class="split">
@@ -887,9 +926,10 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 
 <!-- ========== ACT V — FROM AUDIENCE TO PRODUCER ========== -->
 
-<!-- 22. Three tiers -->
+<!-- 23. Three tiers -->
 <section class="file wide">
   <span class="tab">Options</span>
+  <span class="stain sm p3"></span>
   <h2>Three ways to be in this building</h2>
   <div class="stack" style="margin-top:2.4rem">
     <div>
@@ -915,7 +955,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 23. Picking projects -->
+<!-- 24. Picking projects -->
 <section class="file wide">
   <span class="tab">Method</span>
   <h2>Which ones?</h2>
@@ -937,7 +977,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 24. The overlap rule -->
+<!-- 25. The overlap rule -->
 <section class="file wide">
   <span class="tab">Method</span>
   <div class="split art-left">
@@ -967,7 +1007,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 25. When the overlap fails -->
+<!-- 26. When the overlap fails -->
 <section class="file wide">
   <span class="tab">Method</span>
   <span class="stain p1"></span>
@@ -984,7 +1024,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 26. Retention -->
+<!-- 27. Retention -->
 <section class="file">
   <span class="tab">Second-order</span>
   <div class="split">
@@ -1005,9 +1045,9 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 
 <!-- ========== ACT VI — THE ONE THAT LIVED ========== -->
 
-<!-- 27. The pitch -->
+<!-- 28. The pitch -->
 <section class="card plate">
-  <p class="tw" style="font-size:.5em;letter-spacing:.24em;color:var(--lamp);margin-bottom:1.6rem">THE ONE THAT GOT AWAY</p>
+  <p class="tw" style="font-size:.64em;letter-spacing:.24em;color:var(--lamp);margin-bottom:1.6rem">THE ONE THAT GOT AWAY</p>
   <h1 style="max-width:24ch">KIP-1150</h1>
   <p style="max-width:34ch">Diskless topics in Apache Kafka. Also: a case file with a different ending.</p>
   <aside class="notes">
@@ -1016,7 +1056,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 28. Screen test -->
+<!-- 29. Screen test -->
 <section class="file wide">
   <span class="tab">The pitch</span>
   <span class="stain p2"></span>
@@ -1034,7 +1074,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 29. The proving ground -->
+<!-- 30. The proving ground -->
 <section class="file wide">
   <span class="tab">The screen test</span>
   <span class="stain lg p4"></span>
@@ -1043,14 +1083,15 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   <p>It was explicitly temporary from day one. The stated plan was always to delete it once the feature lands upstream.</p>
   <span class="folio">5492 / 021</span>
   <aside class="notes">
-    Explicit callback to slide 25. This is the payoff for the overlap rule and it's the most
+    Explicit callback to slide 26. This is the payoff for the overlap rule and it's the most
     transferable lesson in Act VI.
   </aside>
 </section>
 
-<!-- 30. Greenlight -->
+<!-- 31. Greenlight -->
 <section class="file wide">
   <span class="tab">Greenlight</span>
+  <span class="stain p5"></span>
   <h2>2 March 2026</h2>
   <dl style="margin:1.4rem 0 0">
     <div class="ev"><dt>Apr 2025</dt><dd>KIP-1150 published. Deliberately written as a <b>meta-KIP</b> — it asks "do we want this?" and nothing else.</dd></div>
@@ -1065,7 +1106,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 31. Alternate ending -->
+<!-- 32. Alternate ending -->
 <section class="card">
   <h2 style="max-width:28ch">Kafka went to the cloud era through the front door.</h2>
   <p style="max-width:34ch;margin-top:1.2rem">Not through a proprietary fork, and not through a vendor's closed rewrite. A need we had became a direction the community chose.</p>
@@ -1078,7 +1119,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
 
 <!-- ========== CREDITS ========== -->
 
-<!-- 32. The roll -->
+<!-- 33. The roll -->
 <section class="card plate" data-transition="fade" data-credits-slide>
   <div class="creditsbox">
     <div class="creditroll" data-credits-roll>
@@ -1093,16 +1134,16 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 33. Takeaways -->
+<!-- 34. Takeaways -->
 <section class="file">
   <span class="tab">Closed</span>
   <span class="stain sm p3"></span>
-  <ol style="font-size:.92em;max-width:40ch">
+  <ol style="font-size:.92em;max-width:44ch">
     <li>Your product is a co-production. You have never read the credits.</li>
     <li>Exhaustion was the mechanism and AI was the accelerant, but neglect was the cause.</li>
     <li>Pick the upstream work you need <em>and</em> they want. That's the part that survives a reorg.</li>
   </ol>
-  <p class="tw" style="position:absolute;bottom:4.5rem;left:6rem;font-size:.5em;letter-spacing:.08em;color:var(--graphite-soft)">
+  <p class="tw" style="position:absolute;bottom:4.5rem;left:6rem;font-size:.64em;letter-spacing:.08em;color:var(--graphite-soft)">
     Josep Prat &nbsp;·&nbsp; @jlprat &nbsp;·&nbsp; @aiven_io<br>
     <!-- QR: drop your images/*-qr.svg here, as in the 2024 deck -->
   </p>
@@ -1113,7 +1154,7 @@ svg.art{display:block; width:100%; height:auto; overflow:visible;}
   </aside>
 </section>
 
-<!-- 34. Sting -->
+<!-- 35. Sting -->
 <section class="card plate" data-transition="fade">
   <p class="sting">The next case number is already on your dependency graph.</p>
   <aside class="notes">
@@ -1328,7 +1369,7 @@ Reveal.initialize({
   plugins: [RevealNotes]
 });
 
-/* --- dependency count on slide 8 --- */
+/* --- dependency count on slide 9 --- */
 document.querySelectorAll('[data-credits-count]').forEach(el => {
   el.textContent = CREDITS.length > 1 ? CREDITS.length : 'N';
 });
@@ -1385,6 +1426,19 @@ function armRoll(ev) {
 }
 Reveal.on('slidechanged', armRoll);
 Reveal.on('ready', armRoll);
+
+/* --- click anywhere to advance -------------------------------------
+   The on-screen controls are off, so the whole slide is the next button.
+   Clicking a link still follows it, releasing a text selection doesn't
+   advance, and in overview mode reveal's own click-to-pick-a-slide wins. */
+document.addEventListener('click', event => {
+  if (event.button !== 0) return;
+  if (Reveal.isOverview()) return;
+  if (event.target.closest('a, button, input, textarea, select, [contenteditable]')) return;
+  const sel = window.getSelection();
+  if (sel && !sel.isCollapsed) return;
+  Reveal.next();
+});
 </script>
 </body>
 </html>
